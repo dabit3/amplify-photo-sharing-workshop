@@ -6,8 +6,7 @@ export default function Header() {
     return (
         <div>
             <h1>Travel Guide</h1>
-            <Link to="/" className={linkStyle}>Home</Link>
-            <Link to="/myposts" className={linkStyle}>Posts</Link>
+            <Link to="/" className={linkStyle}>All Posts</Link>
         </div>
     )
 }

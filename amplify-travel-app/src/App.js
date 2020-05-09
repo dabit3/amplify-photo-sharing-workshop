@@ -11,12 +11,13 @@ import { listPosts } from './graphql/queries';
 
 import Container from './Container';
 import Posts from './Posts';
+import Post from './Post';
 import Header from './Header';
 import CreatePost from './CreatePost';
 import Button from './Button';
 
 function Router() {
-  const [showOverlay, updateOverlayVisibility] = useState(true);
+  const [showOverlay, updateOverlayVisibility] = useState(false);
   const [posts, updatePosts] = useState([]);
   useEffect(() => {
       fetchPosts()
@@ -39,11 +40,11 @@ function Router() {
             <hr className={dividerStyle} />
             <Button title="New Post" onClick={() => updateOverlayVisibility(true)} />
             <Switch>
-              <Route exact path="/" posts={posts} >
-                <Posts />
+              <Route exact path="/" >
+                <Posts posts={posts} />
               </Route>
-              <Route path="/myposts" >
-                <Posts type="myposts" posts={posts} />
+              <Route path="/post/:id" >
+                <Post />
               </Route>
             </Switch>
           </div>
@@ -73,5 +74,5 @@ const contentStyle = css`
   padding: 0px 40px;
 `
 
-// export default withAuthenticator(Router)
-export default Router
+export default withAuthenticator(Router)
+// export default Router

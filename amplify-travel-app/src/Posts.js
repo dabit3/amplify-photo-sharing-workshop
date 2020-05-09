@@ -1,29 +1,39 @@
 import React, { useState, useEffect, useReducer } from 'react'
 import { css } from 'emotion';
 import Container from './Container'
+import { Link } from 'react-router-dom';
 
 export default function Posts({
-    type = "public", posts = []
+    posts = []
 }) {
     
-    const pageName = type === 'public' ? 'Posts' : 'My Posts'
     return (
         <Container>
-            <h1>Hello from {pageName}</h1>
+            <h1>All Posts</h1>
             {
                 posts.map(post => (
-                    <div key={post.id}>
-                        <h2>{post.name}</h2>
-                        <img 
-                            src={post.image}
-                            className={imageStyle}
-                        />
-                    </div>
+                    <Link to={`/post/${post.id}`}>
+                        <div key={post.id} className={postContainer}>
+                            <h1 className={postTitleStyle}>{post.name}</h1>
+                            <p>{post.description}</p>
+                        </div>
+                    </Link>
                 ))
             }
         </Container>
     )
 }
+
+const postTitleStyle = css`
+  margin-top: 10px;
+`
+
+const postContainer = css`
+  border-radius: 10px;
+  padding: 1px 20px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+`
 
 const imageStyle = css`
   width: 600px;
