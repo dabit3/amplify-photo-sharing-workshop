@@ -10,10 +10,10 @@ export default function Posts({
       <h1>All Posts</h1>
       {
         posts.map(post => (
-          <Link to={`/post/${post.id}`} className={linkStyle}>
+          <Link to={`/post/${post.id}`} className={linkStyle} key={post.id}>
             <div key={post.id} className={postContainer}>
               <h1 className={postTitleStyle}>{post.name}</h1>
-              <p className={postDescriptionStyle}>{post.description}</p>
+              <img className={imageStyle} src={post.image} />
             </div>
           </Link>
         ))
@@ -41,6 +41,6 @@ const postContainer = css`
   }
 `
 
-const postDescriptionStyle = css`
-  color: black;
+const imageStyle = css`
+  max-width: 100%;
 `

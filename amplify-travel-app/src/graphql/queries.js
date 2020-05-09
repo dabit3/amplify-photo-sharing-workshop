@@ -6,6 +6,7 @@ export const getPost = /* GraphQL */ `
     getPost(id: $id) {
       id
       name
+      location
       description
       image
       username
@@ -22,6 +23,7 @@ export const listPosts = /* GraphQL */ `
       items {
         id
         name
+        location
         description
         image
         username

@@ -18,7 +18,10 @@ export default function Post() {
           query: getPost, variables: { id }
         });
         const currentPost = postData.data.getPost
+        console.log('currentPost:', currentPost)
         const image = await Storage.get(currentPost.image);
+        console.log('image: ', image)
+
         currentPost.image = image;
         updatePost(currentPost);
         updateLoading(false);
@@ -30,12 +33,22 @@ export default function Post() {
   console.log('post: ', post)
   return (
     <Container>
-        <h1>{post.name}</h1>
+        <h1 className={titleStyle}>{post.name}</h1>
+        <h3 className={locationStyle}>{post.location}</h3>
         <p>{post.description}</p>
         <img src={post.image} className={imageStyle} />
     </Container>
   )
 }
+
+const titleStyle = css`
+  margin-bottom: 7px;
+`
+
+const locationStyle = css`
+  color: #0070f3;
+  margin: 0;
+`
 
 const imageStyle = css`
   max-width: 500px;

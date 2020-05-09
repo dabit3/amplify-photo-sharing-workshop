@@ -5,7 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
-import { css } from 'emotion'
+import { css } from 'emotion';
 import { API, Storage } from 'aws-amplify';
 import { listPosts } from './graphql/queries';
 
@@ -19,17 +19,17 @@ function Router() {
   const [showOverlay, updateOverlayVisibility] = useState(false);
   const [posts, updatePosts] = useState([]);
   useEffect(() => {
-      fetchPosts()
-  }, [])
+      fetchPosts();
+  }, []);
   async function fetchPosts() {
-    let postData = await API.graphql({ query: listPosts, variables: { limit: 100 }})
-    let postsArray = postData.data.listPosts.items
+    let postData = await API.graphql({ query: listPosts, variables: { limit: 100 }});
+    let postsArray = postData.data.listPosts.items;
     postsArray = await Promise.all(postsArray.map(async post => {
-      const imageKey = await Storage.get(post.image)
-      post.image = imageKey
-      return post
-    }))    
-    updatePosts(postsArray)
+      const imageKey = await Storage.get(post.image);
+      post.image = imageKey;
+      return post;
+    }));
+    updatePosts(postsArray);
   }
   return (
     <>
@@ -69,9 +69,8 @@ const dividerStyle = css`
 `
 
 const contentStyle = css`
-  min-height: calc(100vh - 66px);
+  min-height: calc(100vh - 45px);
   padding: 0px 40px;
 `
 
-export default withAuthenticator(Router)
-// export default Router
+export default withAuthenticator(Router);
