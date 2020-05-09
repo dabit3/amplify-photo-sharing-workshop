@@ -1,0 +1,12 @@
+type Post @model
+  @auth(rules: [
+    { allow: owner, ownerField: "username" },
+    { allow: public, operations: [read] }
+  ])
+{
+  id: ID!
+  name: String!
+  description: String!
+  image: String
+  username: String
+}
