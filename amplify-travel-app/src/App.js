@@ -9,7 +9,6 @@ import { css } from 'emotion'
 import { API, Storage } from 'aws-amplify';
 import { listPosts } from './graphql/queries';
 
-import Container from './Container';
 import Posts from './Posts';
 import Post from './Post';
 import Header from './Header';
@@ -33,8 +32,8 @@ function Router() {
     updatePosts(postsArray)
   }
   return (
-    <Container>
-        <HashRouter>
+    <>
+      <HashRouter>
           <div className={contentStyle}>
             <Header />
             <hr className={dividerStyle} />
@@ -59,7 +58,7 @@ function Router() {
             posts={posts}
           />
         )}
-    </Container>
+    </>
   );
 }
 

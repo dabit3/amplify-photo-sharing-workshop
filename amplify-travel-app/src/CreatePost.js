@@ -4,68 +4,69 @@ import Button from './Button';
 import { v4 as uuid } from 'uuid';
 import { Storage, API } from 'aws-amplify';
 import { createPost } from './graphql/mutations';
-import Posts from './Posts';
 
 const initialState = {
-    name: '',
-    description: '',
-    image: {},
-    file: ''
+  name: '',
+  description: '',
+  image: {},
+  file: ''
 };
 
 export default function CreatePost({
-    updateOverlayVisibility, updatePosts, posts
+  updateOverlayVisibility, updatePosts, posts
 }) {
-    const [formState, updateFormState] = useState(initialState)
-    function onChange(e) {
-      e.persist()
-      const image = { fileInfo: e.target.files[0], name: `${e.target.files[0].name}_${uuid()}`}
-      updateFormState(currentState => ({ ...currentState, file: URL.createObjectURL(e.target.files[0]), image }))
-    }
-    async function save() {
-      try {
-        const { name, description, image } = formState
-        if (!name || !image.name || !description) return
-  
-        const postInfo = { name, description, image: formState.image.name }
-        updatePosts([...posts, { ...postInfo, image: formState.file }])
-        updateOverlayVisibility(false)
+  const [formState, updateFormState] = useState(initialState)
+  function onChange(e) {
+    e.persist()
+    const image = { fileInfo: e.target.files[0], name: `${e.target.files[0].name}_${uuid()}`}
+    updateFormState(currentState => ({ ...currentState, file: URL.createObjectURL(e.target.files[0]), image }))
+  }
+  async function save() {
+    try {
+      const { name, description, image } = formState
+      if (!name || !image.name || !description) return
+      const postId = uuid();
 
-        await Storage.put(formState.image.name, formState.image.fileInfo)
-        await API.graphql({
-          query: createPost, variables: { input: postInfo }
-        })
-      } catch (err) {
-        console.log('error: ', err)
-      }
+      const postInfo = { name, description, image: formState.image.name, id: postId }
+      updatePosts([...posts, { ...postInfo, image: formState.file }])
+      updateOverlayVisibility(false)
+
+      await Storage.put(formState.image.name, formState.image.fileInfo)
+      await API.graphql({
+        query: createPost, variables: { input: postInfo }
+      })
+      console.log('created post...')
+    } catch (err) {
+      console.log('error: ', err)
     }
-    function onChangeText(e) {
-      e.persist()
-      updateFormState(currentState => ({ ...currentState, [e.target.name]: e.target.value }))
-    }
-    return (
-        <div className={containerStyle}>
-            <input
-              placeholder="Post name"
-              name="name"
-              className={inputStyle}
-              onChange={onChangeText}
-            />
-            <input
-              placeholder="Post description"
-              name="description"
-              className={inputStyle}
-              onChange={onChangeText}
-            />
-            <input 
-              type="file"
-              onChange={onChange}
-            />
-            { formState.file && <img className={imageStyle} src={formState.file} /> }
-            <Button title="Create New Post" onClick={save} />
-            <Button type="cancel" title="Cancel" onClick={() => updateOverlayVisibility(false)} />
-        </div>
-    )
+  }
+  function onChangeText(e) {
+    e.persist()
+    updateFormState(currentState => ({ ...currentState, [e.target.name]: e.target.value }))
+  }
+  return (
+    <div className={containerStyle}>
+      <input
+        placeholder="Post name"
+        name="name"
+        className={inputStyle}
+        onChange={onChangeText}
+      />
+      <input
+        placeholder="Post description"
+        name="description"
+        className={inputStyle}
+        onChange={onChangeText}
+      />
+      <input 
+        type="file"
+        onChange={onChange}
+      />
+      { formState.file && <img className={imageStyle} src={formState.file} /> }
+      <Button title="Create New Post" onClick={save} />
+      <Button type="cancel" title="Cancel" onClick={() => updateOverlayVisibility(false)} />
+    </div>
+  )
 }
 
 const inputStyle = css`
