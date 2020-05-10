@@ -43,13 +43,13 @@ Now we need to configure the CLI with our credentials.
 ```sh
 $ amplify configure
 
-- Specify the AWS Region: __us-east-1 || us-west-2 || eu-central-1__
-- Specify the username of the new IAM user: __amplify-workshop-user__
-> In the AWS Console, click __Next: Permissions__, __Next: Tags__, __Next: Review__, & __Create User__ to create the new IAM user. Then, return to the command line & press Enter.
+- Specify the AWS Region: us-east-1 || us-west-2 || eu-central-1
+- Specify the username of the new IAM user: amplify-cli-user
+> In the AWS Console, click Next: Permissions, Next: Tags, Next: Review, & Create User to create the new IAM user. Then, return to the command line & press Enter.
 - Enter the access key of the newly created user:   
-? accessKeyId: __(<YOUR_ACCESS_KEY_ID>)__   
-? secretAccessKey:  __(<YOUR_SECRET_ACCESS_KEY>)__
-- Profile Name: __amplify-cli-user__
+? accessKeyId: (<YOUR_ACCESS_KEY_ID>)  
+? secretAccessKey:  (<YOUR_SECRET_ACCESS_KEY>)
+- Profile Name: amplify-cli-user
 ```
 
 ### Initializing A New Project
