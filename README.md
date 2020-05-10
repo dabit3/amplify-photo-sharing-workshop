@@ -4,36 +4,25 @@ In this workshop we'll learn how to build full stack cloud applications with Rea
 
 ### Topics we'll be covering:
 
-- [GraphQL API with AWS AppSync](#adding-a-graphql-api)
-- [Authentication](#adding-authentication)
-- [Adding Authorization to the AWS AppSync API](#adding-authorization-to-the-graphql-api)
-- [Deploying the Services](#deploying-the-services)
-- [Hosting](https://github.com/dabit3/aws-appsync-react-workshop#hosting-via-the-amplify-console)
-- [Deleting the resources](https://github.com/dabit3/aws-appsync-react-workshop#removing-services)
-
-## Redeeming the AWS Credit   
-
-1. Visit the [AWS Console](https://console.aws.amazon.com/console).
-2. In the top right corner, click on __My Account__.
-![](dashboard1.jpg)
-3. In the left menu, click __Credits__.
-![](dashboard2.jpg)
+- GraphQL API with AWS AppSync
+- Authentication
+- Authorization
+- Hosting
+- [eleting the resources
 
 ## Getting Started - Creating the React Application
 
 To get started, we first need to create a new React project using the [Create React App CLI](https://github.com/facebook/create-react-app).
 
 ```bash
-$ npx create-react-app my-amplify-app
+$ npx create-react-app postagram
 ```
 
 Now change into the new app directory & install the AWS Amplify, AWS Amplify React, & uuid libraries:
 
 ```bash
-$ cd my-amplify-app
-$ npm install --save aws-amplify aws-amplify-react uuid
-# or
-$ yarn add aws-amplify aws-amplify-react uuid
+$ cd postagram
+$ npm install aws-amplify glamor emotion uuid @aws-amplify/ui-react@unstable
 ```
 
 ## Installing the CLI & Initializing a new AWS Amplify Project
@@ -61,25 +50,25 @@ Here we'll walk through the `amplify configure` setup. Once you've signed in to 
 - Enter the access key of the newly created user:   
 ? accessKeyId: __(<YOUR_ACCESS_KEY_ID>)__   
 ? secretAccessKey:  __(<YOUR_SECRET_ACCESS_KEY>)__
-- Profile Name: __amplify-workshop-user__
+- Profile Name: __amplify-cli-user__
 
 ### Initializing A New Project
 
 ```bash
 $ amplify init
-```
 
-- Enter a name for the project: __amplifyreactapp__
-- Enter a name for the environment: __dev__
-- Choose your default editor: __Visual Studio Code (or your default editor)__   
-- Please choose the type of app that you're building __javascript__   
-- What javascript framework are you using __react__   
-- Source Directory Path: __src__   
-- Distribution Directory Path: __build__   
-- Build Command: __npm run-script build__   
-- Start Command: __npm run-script start__   
-- Do you want to use an AWS profile? __Y__
-- Please choose the profile you want to use: __amplify-workshop-user__
+- Enter a name for the project: postagram
+- Enter a name for the environment: dev
+- Choose your default editor: Visual Studio Code (or your default editor)
+- Please choose the type of app that youre building javascript
+- What javascript framework are you using react
+- Source Directory Path: src
+- Distribution Directory Path: build
+- Build Command: npm run-script build
+- Start Command: npm run-script start
+- Do you want to use an AWS profile? Y
+- Please choose the profile you want to use: amplify-cli-user
+```
 
 Now, the AWS Amplify CLI has iniatilized a new project & you will see a new folder: __amplify__ & a new file called `aws-exports.js` in the __src__ directory. These files hold your project configuration.
 
@@ -89,11 +78,114 @@ To view the status of the amplify project at any time, you can run the Amplify `
 $ amplify status
 ```
 
+To view the amplify project in the Amplify console at any time, run the `console` command:
+
+```sh
+$ amplify console
+```
+
+## Adding an AWS AppSync GraphQL API
+
+To add a GraphQL API, we can use the following command:
+
+```sh
+$ amplify add api
+
+? Please select from one of the above mentioned services: GraphQL
+? Provide API name: Postagram
+? Choose the default authorization type for the API: API key
+? Enter a description for the API key: public
+? After how many days from now the API key should expire (1-365): 365
+? Do you want to configure advanced settings for the GraphQL API: No
+? Do you have an annotated GraphQL schema? N 
+? Do you want a guided schema creation? Y
+? What best describes your project: Single object with fields
+? Do you want to edit the schema now? (Y/n) Y
+```
+
+The CLI should open this GraphQL schema in your text editor.
+
+__amplify/backend/api/postagram/schema.graphql__
+
+Update the schema to the following:   
+
+```graphql
+type Post @model {
+  id: ID!
+  name: String!
+  location: String!
+  description: String!
+  image: String
+}
+```
+
+### Deploying the API
+
+To deploy the API, run the push command:
+
+```
+$ amplify push
+
+? Are you sure you want to continue? Y
+
+# You will be walked through the following questions for GraphQL code generation
+? Do you want to generate code for your newly created GraphQL API? Y
+? Choose the code generation language target: javascript
+? Enter the file name pattern of graphql queries, mutations and subscriptions: src/graphql/**/*.js
+? Do you want to generate/update all possible GraphQL operations - queries, mutations and subscriptions? Y
+? Enter maximum statement depth [increase from default if your schema is deeply nested]: 2
+```
+
+Now the API is live and you can start interacting with it!
+
+
+### Testing the API
+
+To test it out we can use the GraphiQL editor in the AppSync dashboard. To open the AppSync dashboard, run the following command:
+
+```sh
+$ amplify console api
+
+> Choose GraphQL
+```
+
+In the AppSync dasboard, click on __Queries__ to open the GraphiQL editor. In the editor, create a new post with the following mutation:
+
+```graphql
+mutation createPost {
+  createPost(input: {
+    name: "My first post"
+    location: "New York"
+    description: "Best burgers in NYC - Jackson Hole"
+  }) {
+    id
+    name
+    location
+    description
+  }
+}
+```
+
+Then, query for the posts:
+
+```graphql
+query listPosts {
+  listPosts {
+    items {
+      id
+      name
+      location
+      description
+    }
+  }
+}
+```
+
 ### Configuring the React applicaion
 
-Now, our resources are created & we can start using them!
+Now, our API is created & we can test it out in our app!
 
-The first thing we need to do is to configure our React application to be aware of our new AWS Amplify project. We can do this by referencing the auto-generated `aws-exports.js` file that is now in our src folder.
+The first thing we need to do is to configure our React application to be aware of our Amplify project. We can do this by referencing the auto-generated `aws-exports.js` file that is now in our src folder.
 
 To configure the app, open __src/index.js__ and add the following code below the last import:
 
@@ -105,223 +197,73 @@ Amplify.configure(config)
 
 Now, our app is ready to start using our AWS services.
 
-## Adding a GraphQL API
-
-To add a GraphQL API, we can use the following command:
-
-```sh
-$ amplify add api
-
-? Please select from one of the above mentioned services: GraphQL
-? Provide API name: ConferenceAPI
-? Choose an authorization type for the API: API key
-? Enter a description for the API key: <some description>
-? After how many days from now the API key should expire (1-365): 365
-? Do you want to configure advanced settings for the GraphQL API: No
-? Do you have an annotated GraphQL schema? N 
-? Do you want a guided schema creation? Y
-? What best describes your project: Single object with fields
-? Do you want to edit the schema now? (Y/n) Y
-```
-
-> When prompted, update the schema to the following:   
-
-```graphql
-# amplify/backend/api/ConferenceAPI/schema.graphql
-
-type Talk @model {
-  id: ID!
-  clientId: ID
-  name: String!
-  description: String!
-  speakerName: String!
-  speakerBio: String!
-}
-```
-
-
 ### Interacting with the GraphQL API from our client application - Querying for data
 
-Now that the GraphQL API server is running we can begin interacting with it!
-
-The first thing we'll do is perform a query to fetch data from our API.
+Now that the GraphQL API is running we can begin interacting with it. The first thing we'll do is perform a query to fetch data from our API.
 
 To do so, we need to define the query, execute the query, store the data in our state, then list the items in our UI.
+
+The main thing to notice in this component is the API call. Take a look at this piece of code:
+
+```js
+/* Call API.graphql, passing in the query that we'd like to executre. */
+const postData = await API.graphql({ query: listPosts });
+```
 
 #### src/App.js
 
 ```js
 // src/App.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-// imports from Amplify library
-import { API, graphqlOperation } from 'aws-amplify'
+// import API from Amplify library
+import { API } from 'aws-amplify'
 
 // import query definition
-import { listTalks as ListTalks } from './graphql/queries'
+import { listPosts } from './graphql/queries'
 
-class App extends React.Component {
-  // define some state to hold the data returned from the API
-  state = {
-    talks: []
-  }
-
-  // execute the query in componentDidMount
-  async componentDidMount() {
+export default function App() {
+  const [posts, setPosts] = useState([])
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+  async function fetchPosts() {
     try {
-      const talkData = await API.graphql(graphqlOperation(ListTalks))
-      console.log('talkData:', talkData)
-      this.setState({
-        talks: talkData.data.listTalks.items
-      })
+      const postData = await API.graphql({ query: listPosts });
+      setPosts(postData.data.listPosts.items)
     } catch (err) {
-      console.log('error fetching talks...', err)
+      console.log({ err })
     }
   }
-  render() {
-    return (
-      <>
-        {
-          this.state.talks.map((talk, index) => (
-            <div key={index}>
-              <h3>{talk.speakerName}</h3>
-              <h5>{talk.name}</h5>
-              <p>{talk.description}</p>
-            </div>
-          ))
-        }
-      </>
-    )
-  }
+  return (
+    <div>
+      <h1>Hello World</h1>
+      {
+        posts.map(post => (
+          <div key={post.id}>
+            <h3>{post.name}</h3>
+            <p>{post.location}</p>
+          </div>
+        ))
+      }
+    </div>
+  )
 }
-
-export default App
 ```
 
-In the above code we are using `API.graphql` to call the GraphQL API, and then taking the result from that API call and storing the data in our state. This should be the list of talks you created via the GraphiQL editor.
+In the above code we are using `API.graphql` to call the GraphQL API, and then taking the result from that API call and storing the data in our state. This should be the list of posts you created via the GraphiQL editor.
 
-#### Feel free to add some styling here to your list if you'd like 😀
-
-Next, test the app locally:
+Next, test the app:
 
 ```sh
 $ npm start
-```
-
-## Performing mutations
-
- Now, let's look at how we can create mutations.
-
- To do so, we'll refactor our initial state in order to also hold our form fields and add an event handler.
-
- We'll also be using the `API` class from amplify again, but now will be passing a second argument to `graphqlOperation` in order to pass in variables: `API.graphql(graphqlOperation(CreateTalk, { input: talk }))`.
-
- We also have state to work with the form inputs, for `name`, `description`, `speakerName`, and `speakerBio`.
-
-```js
-// src/App.js
-import React from 'react';
-
-import { API, graphqlOperation } from 'aws-amplify'
-// import uuid to create a unique client ID
-import uuid from 'uuid/v4'
-
-import { listTalks as ListTalks } from './graphql/queries'
-// import the mutation
-import { createTalk as CreateTalk } from './graphql/mutations'
-
-const CLIENT_ID = uuid()
-
-class App extends React.Component {
-  // define some state to hold the data returned from the API
-  state = {
-    name: '', description: '', speakerName: '', speakerBio: '', talks: []
-  }
-
-  // execute the query in componentDidMount
-  async componentDidMount() {
-    try {
-      const talkData = await API.graphql(graphqlOperation(ListTalks))
-      console.log('talkData:', talkData)
-      this.setState({
-        talks: talkData.data.listTalks.items
-      })
-    } catch (err) {
-      console.log('error fetching talks...', err)
-    }
-  }
-  createTalk = async() => {
-    const { name, description, speakerBio, speakerName } = this.state
-    if (name === '' || description === '' || speakerBio === '' || speakerName === '') return
-
-    const talk = { name, description, speakerBio, speakerName, clientId: CLIENT_ID }
-    const talks = [...this.state.talks, talk]
-    this.setState({
-      talks, name: '', description: '', speakerName: '', speakerBio: ''
-    })
-
-    try {
-      await API.graphql(graphqlOperation(CreateTalk, { input: talk }))
-      console.log('item created!')
-    } catch (err) {
-      console.log('error creating talk...', err)
-    }
-  }
-  onChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
-  }
-  render() {
-    return (
-      <>
-        <input
-          name='name'
-          onChange={this.onChange}
-          value={this.state.name}
-          placeholder='name'
-        />
-        <input
-          name='description'
-          onChange={this.onChange}
-          value={this.state.description}
-          placeholder='description'
-        />
-        <input
-          name='speakerName'
-          onChange={this.onChange}
-          value={this.state.speakerName}
-          placeholder='speakerName'
-        />
-        <input
-          name='speakerBio'
-          onChange={this.onChange}
-          value={this.state.speakerBio}
-          placeholder='speakerBio'
-        />
-        <button onClick={this.createTalk}>Create Talk</button>
-        {
-          this.state.talks.map((talk, index) => (
-            <div key={index}>
-              <h3>{talk.speakerName}</h3>
-              <h5>{talk.name}</h5>
-              <p>{talk.description}</p>
-            </div>
-          ))
-        }
-      </>
-    )
-  }
-}
-
-export default App
 ```
 
 ## Adding Authentication
 
 Next, let's update the app to add authentication.
 
-To add authentication, we can use the following command:
+To add the authentication service, we can use the following command:
 
 ```sh
 $ amplify add auth
@@ -331,13 +273,21 @@ $ amplify add auth
 ? Do you want to configure advanced settings? No, I am done.   
 ```
 
+To deploy the authentication service, you can run the `push` command:
+
+```sh
+$ amplify push
+
+? Are you sure you want to continue? Yes
+```
+
 ### Using the withAuthenticator component
 
 To add authentication in the React app, we'll go into __src/App.js__ and first import the `withAuthenticator` HOC (Higher Order Component) from `aws-amplify-react`:
 
 ```js
 // src/App.js, import the new component
-import { withAuthenticator } from 'aws-amplify-react'
+import { withAuthenticator } from '@aws-amplify/ui-react'
 ```
 
 Next, we'll wrap our default export (the App component) with the `withAuthenticator` HOC:
@@ -347,15 +297,7 @@ Next, we'll wrap our default export (the App component) with the `withAuthentica
 export default withAuthenticator(App, { includeGreetings: true })
 ```
 
-To deploy the authentication service and mock and test the app locally, you can run the `mock` command:
-
-```sh
-$ amplify mock
-
-? Are you sure you want to continue? Yes
-```
-
-Next, to test it out in the browser:
+Next test it out in the browser:
 
 ```sh
 npm start
@@ -363,270 +305,515 @@ npm start
 
 Now, we can run the app and see that an Authentication flow has been added in front of our App component. This flow gives users the ability to sign up & sign in.
 
+Once you sign up, check your email to confirm the sign up.
 
-### Accessing User Data
-
-We can access the user's info now that they are signed in by calling `Auth.currentAuthenticatedUser()` in `componentDidMount`.
-
-```js
-import {API, graphqlOperation, /* new 👉 */ Auth} from 'aws-amplify'
-
-async componentDidMount() {
-  // add this code to componentDidMount
-  const user = await Auth.currentAuthenticatedUser()
-  console.log('user:', user)
-  console.log('user info:', user.signInUserSession.idToken.payload)
-}
-```
-
-## Adding Authorization to the GraphQL API
-
-Next we need to update the AppSync API to now use the newly created Cognito Authentication service as the authentication type.
-
-To do so, we'll reconfigure the API:
-
-```sh
-$ amplify update api
-
-? Please select from one of the below mentioned services: GraphQL   
-? Choose the default authorization type for the API: Amazon Cognito User Pool
-? Do you want to configure advanced settings for the GraphQL API: No, I am done
-```
-
-Next, we'll test out the API with authentication enabled:
-
-```sh
-$ amplify mock
-```
-Now, we can only access the API with a logged in user.
-
-You'll notice an __auth__ button in the GraphiQL explorer that will allow you to update the simulated user and their groups.
-
-### Fine Grained access control - Using the @auth directive
-
-####  GraphQL Type level authorization with the @auth directive
-
-For authorization rules, we can start using the `@auth` directive.
-
-What if you'd like to have a new `Comment` type that could only be updated or deleted by the creator of the `Comment` but can be read by anyone?
-
-We could add the following type to our GraphQL schema:
-
-```graphql
-# amplify/backend/api/ConferenceAPI/schema.graphql
-
-type Comment @model @auth(rules: [
-  { allow: owner, ownerField: "createdBy", operations: [create, update, delete]},
-  { allow: private, operations: [read] }
-  ]) {
-  id: ID!
-  message: String
-  createdBy: String
-}
-```
-
-__allow: owner__ - This allows us to set owner authorization rules.   
-__allow: private__ - This allows us to set private authorization rules.   
-
-This would allow us to create comments that only the creator of the Comment could delete, but anyone could read.
-
-Creating a comment:
-
-```graphql
-mutation createComment {
-  createComment(input:{
-    message: "Cool talk"
-  }) {
-    id
-    message
-    createdBy
-  }
-}
-```
-
-Listing comments:
-
-```graphql
-query listComments {
-  listComments {
-    items {
-      id
-      message
-      createdBy
-    }
-  }
-}
-```
-
-Updating a comment:
-
-```graphql
-mutation updateComment {
-  updateComment(input: {
-    id: "59d202f8-bfc8-4629-b5c2-bdb8f121444a"
-  }) {
-    id 
-    message
-    createdBy
-  }
-}
-```
-
-If you try to update a comment from someone else, you will get an unauthorized error.
-
-### Relationships
-
-What if we wanted to create a relationship between the Comment and the Talk? That's pretty easy. We can use the `@connection` directive:
-
-```graphql
-# amplify/backend/api/ConferenceAPI/schema.graphql
-
-type Talk @model {
-  id: ID!
-  clientId: ID
-  name: String!
-  description: String!
-  speakerName: String!
-  speakerBio: String!
-  comments: [Comment] @connection(name: "TalkComments")
-}
-
-type Comment @model @auth(rules: [
-  { allow: owner, ownerField: "createdBy", operations: [create, update, delete]},
-  { allow: private, operations: [read] }
-  ]) {
-  id: ID!
-  message: String
-  createdBy: String
-  talk: Talk @connection(name: "TalkComments")
-}
-```
-
-Because we're updating the way our database is configured by adding relationships which requires a global secondary index, we need to delete the old local database:
-
-```sh
-$ rm -r amplify/mock-data
-```
-
-Now, restart the server:
-
-```sh
-$ amplify mock
-```
-
-Now, we can create relationships between talks and comments. Let's test this out with the following operations:
-
-```graphql
-mutation createTalk {
-  createTalk(input: {
-    id: "test-id-talk-1"
-    name: "Talk 1"
-    description: "Cool talk"
-    speakerBio: "Cool gal"
-    speakerName: "Jennifer"
-  }) {
-    id
-    name
-    description
-  }
-}
-
-mutation createComment {
-  createComment(input: {
-    commentTalkId: "test-id-talk-1"
-    message: "Great talk"
-  }) {
-    id message
-  }
-}
-
-query listTalks {
-  listTalks {
-    items {
-      id
-      name
-      description
-      comments {
-        items {
-          message
-          createdBy
-        }
-      }
-    }
-  }
-}
-```
-
-If you'd like to read more about the `@auth` directive, check out the documentation [here](https://aws-amplify.github.io/docs/cli/graphql#auth).
-
-### Groups
-
-The last problem we are facing is that *anyone* signed in can create a new talk. Let's add authorization that only allows users that are in an __Admin__ group to create and update talks.
-
-```graphql
-# amplify/backend/api/ConferenceAPI/schema.graphql
-
-type Talk @model @auth(rules: [
-  { allow: groups, groups: ["Admin"] },
-  { allow: private, operations: [read] }
-  ]) {
-  id: ID!
-  clientId: ID
-  name: String!
-  description: String!
-  speakerName: String!
-  speakerBio: String!
-  comments: [Comment] @connection(name: "TalkComments")
-}
-
-type Comment @model @auth(rules: [
-  { allow: owner, ownerField: "createdBy", operations: [create, update, delete]},
-  { allow: private, operations: [read] }
-  ]) {
-  id: ID!
-  message: String
-  createdBy: String
-  talk: Talk @connection(name: "TalkComments")
-}
-```
-
-Run the server:
-
-```sh
-$ amplify mock
-```
-
-Click on the __auth__ button and add __Admin__ the user's groups.
-
-Now, you'll notice that only users in the __Admin__ group can create, update, or delete a talk, but anyone can read it.
-
-## Deploying the Services
-
-Next, let's deploy the AppSync GraphQL API and the Lambda function:
-
-```bash
-$ amplify push
-
-? Do you want to generate code for your newly created GraphQL API? Y
-? Choose the code generation language target: javascript
-? Enter the file name pattern of graphql queries, mutations and subscriptions: src/graphql/**/*.js
-? Do you want to generate/update all possible GraphQL operations - queries, mutations and subscriptions? Y
-? Enter maximum statement depth [increase from default if your schema is deeply nested] 2
-```
-
-To view the new AWS AppSync API at any time after its creation, run the following command:
-
-```sh
-$ amplify console api
-```
-
-To view the Cognito User Pool at any time after its creation, run the following command:
+Now that you have the authentication service created, you can view it any time in the console by running the following command:
 
 ```sh
 $ amplify console auth
+
+> Choose User Pool
 ```
 
-To test an authenticated API out in the AWS AppSync console, it will ask for you to __Login with User Pools__. The form will ask you for a __ClientId__. This __ClientId__ is located in __src/aws-exports.js__ in the `aws_user_pools_web_client_id` field.
+### Accessing User Data
+
+We can access the user's info now that they are signed in by calling `Auth.currentAuthenticatedUser()` in `useEffect`.
+
+```js
+import {API, Auth} from 'aws-amplify'
+
+useEffect(() => {
+  checkUser();
+});
+
+async function checkUser() {
+  const user = await Auth.currentAuthenticatedUser();
+  console.log('user:', user);
+}
+```
+
+## Image Storage with Amazon S3
+
+The last feature we need to have is image storage. To add image storage, we'll use Amazon S3. Amazon S3 can be configured and created via the Amplify CLI:
+
+```sh
+$ amplify add storage
+
+? Please select from one of the below mentioned services: Content
+? ? Please provide a friendly name for your resource that will be used to label this categ
+ory in the project: images
+? Please provide bucket name: postagram14148f2f4aeb4f259c847e1e27145a2 <use_default>
+? Who should have access: Auth and guest users
+? What kind of access do you want for Authenticated users? create, update, read, delete
+? What kind of access do you want for Guest users? read
+? Do you want to add a Lambda Trigger for your S3 Bucket? N
+```
+
+To deploy the service, run the following command:
+
+```sh
+$ amplify push
+```
+
+To save items to S3, we use the `Storage` API. The `Storage` API works like this.
+
+1. Saving an item:
+
+```js
+const file = e.target.files[0];
+await Storage.put(file.name, file);
+```
+
+2. Getting an item:
+
+```js
+const image = await Storage.get('my-image-key.jpg')
+```
+
+Now we can start saving images to S3 and we can continue building the Travel app.
+
+# Travel App
+
+Now that we have the services we need, let's continue by building out the front end of the travel app.
+
+### Creating the folder structure for our app
+
+Next, create the following files in the __src__ directory:
+
+```sh
+Button.js
+CreatePost.js
+Header.js
+Post.js
+Posts.js
+```
+
+Next, we'll go one by one and update these files with our new code.
+
+### Button.js
+
+Here, we will create a button that we'll be reusing across the app:
+
+```js
+import React from 'react';
+import { css } from 'emotion';
+
+export default function Button({
+  title, onClick, type = "action"
+}) {
+  return (
+    <button className={buttonStyle(type)} onClick={onClick}>
+      { title }
+    </button>
+  )
+}
+
+const buttonStyle = type => css`
+  background-color: ${type === "action" ? "black" : "red"};
+  height: 40px;
+  width: 160px;
+  font-weight: 600;
+  font-size: 16px;
+  color: white;
+  outline: none;
+  border: none;
+  margin-top: 5px;
+  cursor: pointer;
+  :hover {
+    background-color: #363636;
+  }
+`
+```
+
+### Header.js
+
+Add the following code in __Header.js__
+
+```js
+import React from 'react';
+import { css } from 'emotion';
+import { Link } from 'react-router-dom';
+
+export default function Header() {
+  return (
+    <div className={headerContainer}>
+      <h1 className={headerStyle}>Postagram</h1>
+      <Link to="/" className={linkStyle}>All Posts</Link>
+    </div>
+  )
+}
+
+const headerContainer = css`
+  padding-top: 20px;
+`
+
+const headerStyle = css`
+  font-size: 40px;
+  margin-top: 0px;
+`
+
+const linkStyle = css`
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  margin-right: 10px;
+  :hover {
+    color: #058aff;
+  }
+`
+```
+
+## Posts.js
+
+The next thing we'll do is create the __Posts__ component to render a list of posts.
+
+This will go in the main view of the app. The only data from the post that will be rendered in this view is the post name and post image.
+
+The `posts` array will be passed in as a prop to the __Posts__ component.
+
+```js
+import React from 'react'
+import { css } from 'emotion';
+import { Link } from 'react-router-dom';
+
+export default function Posts({
+  posts = []
+}) {
+  return (
+    <>
+      <h1>All Posts</h1>
+      {
+        posts.map(post => (
+          <Link to={`/post/${post.id}`} className={linkStyle} key={post.id}>
+            <div key={post.id} className={postContainer}>
+              <h1 className={postTitleStyle}>{post.name}</h1>
+              <img className={imageStyle} src={post.image} />
+            </div>
+          </Link>
+        ))
+      }
+    </>
+  )
+}
+
+const postTitleStyle = css`
+  margin: 15px 0px;
+  color: #0070f3;
+`
+
+const linkStyle = css`
+  text-decoration: none;
+`
+
+const postContainer = css`
+  border-radius: 10px;
+  padding: 1px 20px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  :hover {
+    border-color: #0070f3;
+  }
+`
+
+const imageStyle = css`
+  width: 100%;
+  max-width: 400px;
+`
+```
+
+## CreatePost.js
+
+This component has a lot going on, so before we dive into the code let's walk through what is going on here:
+
+1. We create some initial state using the `useState` hook. This state is created using the `initialState` object.
+2. The `onChangeText` handler sets the name, description, and location fields of the post
+3. The `onChangeImage` handler allows the user to upload an image and saves it to state. It also creates a unique image name.
+4. The `save` function does the following:
+- First checks to make sure that all of the form fields are populated
+- Next, it updates the `saving` state to true to show a saving indicator 
+- We then create a unique ID for the post using the `uuid` library
+- Using the form state and the `uuid`, we create a post object that will be sent to the API.
+- Next, we upload the image to S3 using `Storage.put`, passing in the image name and the file
+- Once the image upload is successful, we create the `post` in our GraphQL API
+- Finally, we update the local state, close the popup, and update the local `posts` array with the new post
+
+```js
+import React, { useState, useEffect } from 'react';
+import { css } from 'emotion';
+import Button from './Button';
+import { v4 as uuid } from 'uuid';
+import { Storage, API } from 'aws-amplify';
+import { createPost } from './graphql/mutations';
+
+/* Initial state to hold form input, saving state */
+const initialState = {
+  name: '',
+  description: '',
+  image: {},
+  file: '',
+  location: '',
+  saving: false
+};
+
+export default function CreatePost({
+  updateOverlayVisibility, updatePosts, posts
+}) {
+  /* 1. Create local state with useState hook */
+  const [formState, updateFormState] = useState(initialState)
+
+  /* 2. onChangeText handler updates the form state when a user types int a form field */
+  function onChangeText(e) {
+    e.persist();
+    updateFormState(currentState => ({ ...currentState, [e.target.name]: e.target.value }));
+  }
+
+  /* 3. onChangeFile hanlder will be fired when a user uploads a file  */
+  function onChangeFile(e) {
+    e.persist();
+    if (! e.target.files[0]) return;
+    const image = { fileInfo: e.target.files[0], name: `${e.target.files[0].name}_${uuid()}`}
+    updateFormState(currentState => ({ ...currentState, file: URL.createObjectURL(e.target.files[0]), image }))
+  }
+
+  /* 4. Save the post  */
+  async function save() {
+    try {
+      const { name, description, location, image } = formState;
+      if (!name || !description || !location || !image.name) return;
+      updateFormState(currentState => ({ ...currentState, saving: true }));
+      const postId = uuid();
+      const postInfo = { name, description, location, image: formState.image.name, id: postId };
+
+      await Storage.put(formState.image.name, formState.image.fileInfo);
+      await API.graphql({
+        query: createPost, variables: { input: postInfo }
+      });
+      updatePosts([...posts, { ...postInfo, image: formState.file }]);
+      updateFormState(currentState => ({ ...currentState, saving: false }));
+      updateOverlayVisibility(false);
+    } catch (err) {
+      console.log('error: ', err);
+    }
+  }
+
+  return (
+    <div className={containerStyle}>
+      <input
+        placeholder="Post name"
+        name="name"
+        className={inputStyle}
+        onChange={onChangeText}
+      />
+      <input
+        placeholder="Location"
+        name="location"
+        className={inputStyle}
+        onChange={onChangeText}
+      />
+      <input
+        placeholder="Description"
+        name="description"
+        className={inputStyle}
+        onChange={onChangeText}
+      />
+      <input 
+        type="file"
+        onChange={onChangeFile}
+      />
+      { formState.file && <img className={imageStyle} src={formState.file} /> }
+      <Button title="Create New Post" onClick={save} />
+      <Button type="cancel" title="Cancel" onClick={() => updateOverlayVisibility(false)} />
+      { formState.saving && <p className={savingMessageStyle}>Saving post...</p> }
+    </div>
+  )
+}
+
+const inputStyle = css`
+  margin-bottom: 10px;
+  outline: none;
+  padding: 7px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  border-radius: 4px;
+`
+
+const imageStyle = css`
+  height: 120px;
+  margin: 10px 0px;
+  object-fit: contain;
+`
+
+const containerStyle = css`
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 420px;
+  position: fixed;
+  left: 0;
+  border-radius: 4px;
+  top: 0;
+  margin-left: calc(50vw - 220px);
+  margin-top: calc(50vh - 230px);
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.125rem 0.25rem;
+  padding: 20px;
+`
+
+const savingMessageStyle = css`
+  margin-bottom: 0px;
+`
+```
+
+## Post.js
+
+The next component that we'll build is the Post component.
+
+In this component, we will be reading the post `id` from the router parameters. We'll then use this post `id` to make an API call to the GraphQL API to fetch the post details.
+
+Another thing to look at is how we deal with images.
+
+When storing an image in S3, we
+
+```js
+import React, { useState, useEffect, useReducer } from 'react'
+import { css } from 'emotion';
+import Container from './Container'
+import { useParams } from 'react-router-dom';
+import { API, Storage } from 'aws-amplify';
+import { getPost } from './graphql/queries';
+
+export default function Post() {
+  const [loading, updateLoading] = useState(true);
+  const [post, updatePost] = useState(null);
+  const { id } = useParams()
+  useEffect(() => {
+    fetchPost()
+  }, [])
+  async function fetchPost() {
+    try {
+      const postData = await API.graphql({
+        query: getPost, variables: { id }
+      });
+      const currentPost = postData.data.getPost
+      const image = await Storage.get(currentPost.image);
+
+      currentPost.image = image;
+      updatePost(currentPost);
+      updateLoading(false);
+    } catch (err) {
+      console.log('error: ', err)
+    }
+  }
+  if (loading) return <h3>Loading...</h3>
+  console.log('post: ', post)
+  return (
+    <>
+      <h1 className={titleStyle}>{post.name}</h1>
+      <h3 className={locationStyle}>{post.location}</h3>
+      <p>{post.description}</p>
+      <img src={post.image} className={imageStyle} />
+    </>
+  )
+}
+
+const titleStyle = css`
+  margin-bottom: 7px;
+`
+
+const locationStyle = css`
+  color: #0070f3;
+  margin: 0;
+`
+
+const imageStyle = css`
+  max-width: 500px;
+  @media (max-width: 500px) {
+    width: 100%;
+  }
+`
+```
+
+## Router
+
+Next, create the router in App.js. Our app will have two main routes:
+
+1. A home route - `/`. This route will render a list of posts from our API
+2. A post details route - `/post/:id`. This route will render a single post and details about that post.
+
+Using React Router, we can read the Post ID from the route and fetch the post associated with it. This is a common pattern in many apps as it makes the link shareable.
+
+Another way to do this would be to have some global state management set up and setting the post ID in the global state. The main drawback of this approach is that the URL cannot be shared.
+
+```js
+import React, { useState, useEffect } from "react";
+import {
+  HashRouter,
+  Switch,
+  Route
+} from "react-router-dom";
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
+import { css } from 'emotion';
+import { API, Storage } from 'aws-amplify';
+import { listPosts } from './graphql/queries';
+
+import Posts from './Posts';
+import Post from './Post';
+import Header from './Header';
+import CreatePost from './CreatePost';
+import Button from './Button';
+
+function Router() {
+  const [showOverlay, updateOverlayVisibility] = useState(false);
+  const [posts, updatePosts] = useState([]);
+  useEffect(() => {
+      fetchPosts();
+  }, []);
+  async function fetchPosts() {
+    let postData = await API.graphql({ query: listPosts, variables: { limit: 100 }});
+    let postsArray = postData.data.listPosts.items;
+    postsArray = await Promise.all(postsArray.map(async post => {
+      const imageKey = await Storage.get(post.image);
+      post.image = imageKey;
+      return post;
+    }));
+    updatePosts(postsArray);
+  }
+  return (
+    <>
+      <HashRouter>
+          <div className={contentStyle}>
+            <Header />
+            <hr className={dividerStyle} />
+            <Button title="New Post" onClick={() => updateOverlayVisibility(true)} />
+            <Switch>
+              <Route exact path="/" >
+                <Posts posts={posts} />
+              </Route>
+              <Route path="/post/:id" >
+                <Post />
+              </Route>
+            </Switch>
+          </div>
+          <div>
+            <AmplifySignOut />
+          </div>
+        </HashRouter>
+    </>
+  );
+}
+
+const dividerStyle = css`
+  margin-top: 15px;
+`
+
+const contentStyle = css`
+  min-height: calc(100vh - 45px);
+  padding: 0px 40px;
+`
+
+export default withAuthenticator(Router);
+```
 
 ## Hosting
 
@@ -684,6 +871,138 @@ If you'd like to delete the entire project, you can run the `delete` command:
 ```sh
 $ amplify delete
 ```
+
+## Additional learning & use cases
+
+## Adding Authorization to the GraphQL API
+
+You can update the AppSync API to use the Cognito Authentication service as the base authentication type.
+
+To do so, reconfigure the API:
+
+```sh
+$ amplify update api
+
+? Please select from one of the below mentioned services: GraphQL   
+? Select from the options below: Update auth settings
+? Choose the default authorization type for the API: Amazon Cognito User Pool
+? Configure additional auth types? Y
+? Choose the additional authorization types you want to configure for the API: API key
+? Enter a description for the API key: public
+? After how many days from now the API key should expire (1-365): 100 <or your preferred expiration>
+```
+
+Now, update the GraphQL schema to the following:
+
+```graphql
+type Post @model
+  @auth(rules: [
+    { allow: owner, ownerField: "username" },
+    { allow: public, operations: [read] }
+  ])
+{
+  id: ID!
+  name: String!
+  location: String!
+  description: String!
+  image: String
+  username: String
+}
+```
+
+Now, you will have two types of API access:
+
+1. Private (Cognito) - to create a post, a user must be signed in. Once they have created a post, they can update and delete their own post. When a query is made, only their `Posts` will be queried from the API
+
+2. Public (API key) - Any user, regardless if they are signed in, can query for posts or a single post.
+
+To make this secondary public API call from the client, the authorization type needs to be specified in the query:
+
+```js
+const postData = await API.graphql({
+  query: listPosts,
+  authMode: 'API_KEY'
+});
+```
+
+Using this combination, you can easily query for just a single user's posts or for all posts.
+
+### Relationships
+
+What if we wanted to create a relationship between the Post and another type.
+
+```graphql
+# amplify/backend/api/Postagram/schema.graphql
+
+type Post @model
+  @auth(rules: [
+    { allow: owner, ownerField: "username" },
+    { allow: public, operations: [read] }
+  ])
+{
+  id: ID!
+  name: String!
+  location: String!
+  description: String!
+  image: String
+  username: String
+  comments: [Comment] @connection
+}
+
+type Comment {
+  id: ID
+  message: String
+}
+```
+
+Because we're updating the way our database is configured by adding relationships which requires a global secondary index, we need to delete the old local database:
+
+Now, we can create relationships between posts and comments. Let's test this out with the following operations:
+
+```graphql
+mutation createPost {
+  createPost(input: {
+    id: "test-id-post-1"
+    name: "Post 1"
+    location: "Jamaica"
+    description: "Great vacation"
+  }) {
+    id
+    name
+    description
+  }
+}
+
+mutation createComment {
+  createComment(input: {
+    postCommentsId: "test-id-talk-1"
+    message: "Great post!"
+  }) {
+    id message
+  }
+}
+
+query listPosts {
+  listPosts {
+    items {
+      id
+      name
+      description
+      location
+      comments {
+        items {
+          message
+          createdBy
+        }
+      }
+    }
+  }
+}
+```
+
+If you'd like to read more about the `@auth` directive, check out the documentation [here](https://aws-amplify.github.io/docs/cli/graphql#auth).
+
+<!-- ## Real-time -->
 
 <!-- ### GraphQL Subscriptions
 
