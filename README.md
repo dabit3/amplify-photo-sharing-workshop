@@ -523,6 +523,14 @@ const imageStyle = css`
 
 ## CreatePost.js
 
+The next component we'll create is `CreatePost`. This component is a form that will be displayed to the user as an `overlay` or a `modal`. In it, the user will be able to toggle the overlay to show and hide it, and also be able to create a new post.
+
+The props this component will receive are the following:
+
+1. `updateOverlayVisibility` - This function will toggle the overlay to show / hide it
+2. `updatePosts` - This function will allow us to update the main posts array
+3. `posts` - The posts coming back from our API
+
 This component has a lot going on, so before we dive into the code let's walk through what is going on here:
 
 1. We create some initial state using the `useState` hook. This state is created using the `initialState` object.
@@ -745,6 +753,10 @@ Using React Router, we can read the Post ID from the route and fetch the post as
 
 Another way to do this would be to have some global state management set up and setting the post ID in the global state. The main drawback of this approach is that the URL cannot be shared.
 
+Other than routing, the main functionality happening in this component is an `API` call to fetch posts from our API.
+
+
+
 ```js
 import React, { useState, useEffect } from "react";
 import {
@@ -764,19 +776,25 @@ import CreatePost from './CreatePost';
 import Button from './Button';
 
 function Router() {
+  /* create a couple of pieces of initial state */
   const [showOverlay, updateOverlayVisibility] = useState(false);
   const [posts, updatePosts] = useState([]);
+
+  /* fetch posts when component loads */
   useEffect(() => {
       fetchPosts();
   }, []);
   async function fetchPosts() {
+    /* query the API, ask for 100 items */
     let postData = await API.graphql({ query: listPosts, variables: { limit: 100 }});
     let postsArray = postData.data.listPosts.items;
+    /* map over the image keys in the posts array, get signed image URLs for each image */
     postsArray = await Promise.all(postsArray.map(async post => {
       const imageKey = await Storage.get(post.image);
       post.image = imageKey;
       return post;
     }));
+    /* update the posts array in the local state */
     updatePosts(postsArray);
   }
   return (
@@ -833,9 +851,13 @@ $ git commit -m 'initial commit'
 $ git push origin master
 ```
 
-Next we'll visit the Amplify Console in our AWS account at [https://us-east-1.console.aws.amazon.com/amplify/home](https://us-east-1.console.aws.amazon.com/amplify/home).
+Next we'll visit the Amplify Console for the app we've already deployed:
 
-Here, we'll click on the app that we deployed earlier.
+```sh
+$ amplify console
+```
+
+In the __Frontend Environments__ section, under __Connect a frontend web app__ choose __GitHub__ then then click on __Connect branch__.
 
 Next, under "Frontend environments", authorize Github as the repository service.
 
@@ -846,7 +868,6 @@ In the next screen, we'll create a new role & use this role to allow the Amplify
 Finally, we can click __Save and Deploy__ to deploy our application!
 
 Now, we can push updates to Master to update our application.
-
 
 ## Removing Services
 
