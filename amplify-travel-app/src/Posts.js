@@ -42,5 +42,6 @@ const postContainer = css`
 `
 
 const imageStyle = css`
-  max-width: 100%;
+  width: 100%;
+  max-width: 400px;
 `

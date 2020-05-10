@@ -14,30 +14,28 @@ export default function Post() {
   }, [])
   async function fetchPost() {
     try {
-        const postData = await API.graphql({
-          query: getPost, variables: { id }
-        });
-        const currentPost = postData.data.getPost
-        console.log('currentPost:', currentPost)
-        const image = await Storage.get(currentPost.image);
-        console.log('image: ', image)
+      const postData = await API.graphql({
+        query: getPost, variables: { id }
+      });
+      const currentPost = postData.data.getPost
+      const image = await Storage.get(currentPost.image);
 
-        currentPost.image = image;
-        updatePost(currentPost);
-        updateLoading(false);
-    } catch (err) {
+      currentPost.image = image;
+      updatePost(currentPost);
+      updateLoading(false);
+  } catch (err) {
       console.log('error: ', err)
     }
   }
   if (loading) return <h3>Loading...</h3>
   console.log('post: ', post)
   return (
-    <Container>
-        <h1 className={titleStyle}>{post.name}</h1>
-        <h3 className={locationStyle}>{post.location}</h3>
-        <p>{post.description}</p>
-        <img src={post.image} className={imageStyle} />
-    </Container>
+    <>
+      <h1 className={titleStyle}>{post.name}</h1>
+      <h3 className={locationStyle}>{post.location}</h3>
+      <p>{post.description}</p>
+      <img src={post.image} className={imageStyle} />
+    </>
   )
 }
 

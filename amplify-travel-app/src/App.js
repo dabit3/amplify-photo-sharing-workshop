@@ -62,8 +62,6 @@ function Router() {
   );
 }
 
-
-
 const dividerStyle = css`
   margin-top: 15px;
 `

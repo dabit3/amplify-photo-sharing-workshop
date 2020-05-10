@@ -18,7 +18,7 @@ export default function CreatePost({
   updateOverlayVisibility, updatePosts, posts
 }) {
   const [formState, updateFormState] = useState(initialState)
-  function onChange(e) {
+  function onChangeFile(e) {
     e.persist();
     if (! e.target.files[0]) return;
     const image = { fileInfo: e.target.files[0], name: `${e.target.files[0].name}_${uuid()}`}
@@ -69,7 +69,7 @@ export default function CreatePost({
       />
       <input 
         type="file"
-        onChange={onChange}
+        onChange={onChangeFile}
       />
       { formState.file && <img className={imageStyle} src={formState.file} /> }
       <Button title="Create New Post" onClick={save} />
