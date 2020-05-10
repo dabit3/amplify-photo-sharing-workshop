@@ -1,14 +1,15 @@
 # Full Stack React with GraphQL and AWS Amplify Workshop
 
-In this workshop we'll learn how to build full stack cloud applications with React, GraphQL, & [AWS Amplify](https://aws-amplify.github.io/)
+In this workshop we'll learn how to build a full stack cloud application with React, GraphQL, & [Amplify](https://aws-amplify.github.io/)
 
 ### Topics we'll be covering:
 
 - GraphQL API with AWS AppSync
 - Authentication
+- Object (image) storage
 - Authorization
 - Hosting
-- [eleting the resources
+- Deleting the resources
 
 ## Getting Started - Creating the React Application
 
@@ -18,11 +19,11 @@ To get started, we first need to create a new React project using the [Create Re
 $ npx create-react-app postagram
 ```
 
-Now change into the new app directory & install the AWS Amplify, AWS Amplify React, & uuid libraries:
+Now change into the new app directory & install AWS Amplify, AWS Amplify UI React, emotion, & uuid:
 
 ```bash
 $ cd postagram
-$ npm install aws-amplify glamor emotion uuid @aws-amplify/ui-react@unstable
+$ npm install aws-amplify emotion uuid @aws-amplify/ui-react@unstable
 ```
 
 ## Installing the CLI & Initializing a new AWS Amplify Project
@@ -35,15 +36,13 @@ Next, we'll install the AWS Amplify CLI:
 $ npm install -g @aws-amplify/cli
 ```
 
-Now we need to configure the CLI with our credentials:
-
-```sh
-$ amplify configure
-```
+Now we need to configure the CLI with our credentials.
 
 > If you'd like to see a video walkthrough of this configuration process, click [here](https://www.youtube.com/watch?v=fWbM5DLh25U).
 
-Here we'll walk through the `amplify configure` setup. Once you've signed in to the AWS console, continue:
+```sh
+$ amplify configure
+
 - Specify the AWS Region: __us-east-1 || us-west-2 || eu-central-1__
 - Specify the username of the new IAM user: __amplify-workshop-user__
 > In the AWS Console, click __Next: Permissions__, __Next: Tags__, __Next: Review__, & __Create User__ to create the new IAM user. Then, return to the command line & press Enter.
@@ -51,6 +50,7 @@ Here we'll walk through the `amplify configure` setup. Once you've signed in to 
 ? accessKeyId: __(<YOUR_ACCESS_KEY_ID>)__   
 ? secretAccessKey:  __(<YOUR_SECRET_ACCESS_KEY>)__
 - Profile Name: __amplify-cli-user__
+```
 
 ### Initializing A New Project
 
