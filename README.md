@@ -61,7 +61,7 @@ $ amplify init
 - Enter a name for the environment: dev
 - Choose your default editor: Visual Studio Code (or your default editor)
 - Please choose the type of app that youre building javascript
-- What javascript framework are you using react
+- What javascript framework are you using: react
 - Source Directory Path: src
 - Distribution Directory Path: build
 - Build Command: npm run-script build
@@ -70,7 +70,7 @@ $ amplify init
 - Please choose the profile you want to use: amplify-cli-user
 ```
 
-Now, the AWS Amplify CLI has iniatilized a new project & you will see a new folder: __amplify__ & a new file called `aws-exports.js` in the __src__ directory. These files hold your project configuration.
+Tthe AWS Amplify CLI has iniatilized a new project & you will see a new folder: __amplify__ & a new file called `aws-exports.js` in the __src__ directory. These files hold your project configuration.
 
 To view the status of the amplify project at any time, you can run the Amplify `status` command:
 
@@ -105,7 +105,7 @@ $ amplify add api
 
 The CLI should open this GraphQL schema in your text editor.
 
-__amplify/backend/api/postagram/schema.graphql__
+__amplify/backend/api/Postagram/schema.graphql__
 
 Update the schema to the following:   
 
@@ -283,10 +283,10 @@ $ amplify push
 
 ### Using the withAuthenticator component
 
-To add authentication in the React app, we'll go into __src/App.js__ and first import the `withAuthenticator` HOC (Higher Order Component) from `aws-amplify-react`:
+To add authentication in the React app, we'll go into __src/App.js__ and first import the `withAuthenticator` HOC (Higher Order Component) from `@aws-amplify/ui-react`:
 
 ```js
-// src/App.js, import the new component
+// src/App.js, import the withAuthenticator component
 import { withAuthenticator } from '@aws-amplify/ui-react'
 ```
 
@@ -294,7 +294,7 @@ Next, we'll wrap our default export (the App component) with the `withAuthentica
 
 ```js
 // src/App.js, change the default export to this:
-export default withAuthenticator(App, { includeGreetings: true })
+export default withAuthenticator(App)
 ```
 
 Next test it out in the browser:
@@ -313,6 +313,17 @@ Now that you have the authentication service created, you can view it any time i
 $ amplify console auth
 
 > Choose User Pool
+```
+
+### Adding a sign out button
+
+You can also easily add a precondigured UI component for signing out.
+
+```js
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
+
+/* Somewhere in the UI */
+<AmplifySignOut />
 ```
 
 ### Accessing User Data
