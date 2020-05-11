@@ -19,11 +19,11 @@ To get started, we first need to create a new React project using the [Create Re
 $ npx create-react-app postagram
 ```
 
-Now change into the new app directory & install AWS Amplify, AWS Amplify UI React, emotion, & uuid:
+Now change into the new app directory & install AWS Amplify, AWS Amplify UI React, react-router-dom, emotion, & uuid:
 
 ```bash
 $ cd postagram
-$ npm install aws-amplify emotion uuid @aws-amplify/ui-react@unstable
+$ npm install aws-amplify emotion uuid react-router-dom @aws-amplify/ui-react@unstable
 ```
 
 ## Installing the CLI & Initializing a new AWS Amplify Project
@@ -60,7 +60,7 @@ $ amplify init
 - Enter a name for the project: postagram
 - Enter a name for the environment: dev
 - Choose your default editor: Visual Studio Code (or your default editor)
-- Please choose the type of app that youre building javascript
+- Please choose the type of app that youre building: javascript
 - What javascript framework are you using: react
 - Source Directory Path: src
 - Distribution Directory Path: build
@@ -70,7 +70,7 @@ $ amplify init
 - Please choose the profile you want to use: amplify-cli-user
 ```
 
-Tthe AWS Amplify CLI has iniatilized a new project & you will see a new folder: __amplify__ & a new file called `aws-exports.js` in the __src__ directory. These files hold your project configuration.
+The Amplify CLI has iniatilized a new project & you will see a new folder: __amplify__ & a new file called `aws-exports.js` in the __src__ directory. These files hold your project configuration.
 
 To view the status of the amplify project at any time, you can run the Amplify `status` command:
 
@@ -95,7 +95,7 @@ $ amplify add api
 ? Provide API name: Postagram
 ? Choose the default authorization type for the API: API key
 ? Enter a description for the API key: public
-? After how many days from now the API key should expire (1-365): 365
+? After how many days from now the API key should expire (1-365): 365 (or your preferred expiration)
 ? Do you want to configure advanced settings for the GraphQL API: No
 ? Do you have an annotated GraphQL schema? N 
 ? Do you want a guided schema creation? Y
@@ -132,7 +132,7 @@ $ amplify push
 ? Do you want to generate code for your newly created GraphQL API? Y
 ? Choose the code generation language target: javascript
 ? Enter the file name pattern of graphql queries, mutations and subscriptions: src/graphql/**/*.js
-? Do you want to generate/update all possible GraphQL operations - queries, mutations and subscriptions? Y
+? Do you want to generate/update all possible GraphQL operations - queries, mutations and subscriptions? Yes
 ? Enter maximum statement depth [increase from default if your schema is deeply nested]: 2
 ```
 
@@ -149,7 +149,7 @@ $ amplify console api
 > Choose GraphQL
 ```
 
-In the AppSync dasboard, click on __Queries__ to open the GraphiQL editor. In the editor, create a new post with the following mutation:
+In the AppSync dashboard, click on __Queries__ to open the GraphiQL editor. In the editor, create a new post with the following mutation:
 
 ```graphql
 mutation createPost {
@@ -293,6 +293,8 @@ import { withAuthenticator } from '@aws-amplify/ui-react'
 Next, we'll wrap our default export (the App component) with the `withAuthenticator` HOC:
 
 ```js
+function App() {/* rest of code code */}
+
 // src/App.js, change the default export to this:
 export default withAuthenticator(App)
 ```
@@ -317,7 +319,7 @@ $ amplify console auth
 
 ### Adding a sign out button
 
-You can also easily add a precondigured UI component for signing out.
+You can also easily add a preconfigured UI component for signing out.
 
 ```js
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
@@ -340,6 +342,7 @@ useEffect(() => {
 async function checkUser() {
   const user = await Auth.currentAuthenticatedUser();
   console.log('user:', user);
+  console.log('user meta: ', user.signInUserSession.idToken.payload);
 }
 ```
 
@@ -697,7 +700,6 @@ When storing an image in S3, we
 ```js
 import React, { useState, useEffect, useReducer } from 'react'
 import { css } from 'emotion';
-import Container from './Container'
 import { useParams } from 'react-router-dom';
 import { API, Storage } from 'aws-amplify';
 import { getPost } from './graphql/queries';
@@ -753,7 +755,7 @@ const imageStyle = css`
 `
 ```
 
-## Router
+## Router - App.js
 
 Next, create the router in App.js. Our app will have two main routes:
 
@@ -824,10 +826,15 @@ function Router() {
               </Route>
             </Switch>
           </div>
-          <div>
-            <AmplifySignOut />
-          </div>
+          <AmplifySignOut />
         </HashRouter>
+        { showOverlay && (
+          <CreatePost
+            updateOverlayVisibility={updateOverlayVisibility}
+            updatePosts={updatePosts}
+            posts={posts}
+          />
+        )}
     </>
   );
 }
@@ -842,6 +849,30 @@ const contentStyle = css`
 `
 
 export default withAuthenticator(Router);
+```
+
+### Deleting the exising data
+
+Now the app is ready to test out, but before we do let's delete the existing data in the database. To do so, follow these steps:
+
+1. Open the Amplify Console
+
+```sh
+$ amplify console
+```
+
+2. Click on __API__, then click on __PostTable__ under the __Data sources__ tab.
+
+3. Click on the __Items__ tab.
+
+4. Select the items in the database and delete them by choosing __Delete__ from the __Actions__ button.
+
+### Testing the app
+
+Now we can try everything out. To start the app, run the `start` command:
+
+```sh
+$ amplify start
 ```
 
 ## Hosting
