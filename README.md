@@ -502,7 +502,7 @@ export default function Posts({
           <Link to={`/post/${post.id}`} className={linkStyle} key={post.id}>
             <div key={post.id} className={postContainer}>
               <h1 className={postTitleStyle}>{post.name}</h1>
-              <img className={imageStyle} src={post.image} />
+              <img alt="post" className={imageStyle} src={post.image} />
             </div>
           </Link>
         ))
@@ -561,7 +561,7 @@ This component has a lot going on, so before we dive into the code let's walk th
 - Finally, we update the local state, close the popup, and update the local `posts` array with the new post
 
 ```js
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { css } from 'emotion';
 import Button from './Button';
 import { v4 as uuid } from 'uuid';
@@ -643,7 +643,7 @@ export default function CreatePost({
         type="file"
         onChange={onChangeFile}
       />
-      { formState.file && <img className={imageStyle} src={formState.file} /> }
+      { formState.file && <img className={imageStyle} alt="preview" src={formState.file} /> }
       <Button title="Create New Post" onClick={save} />
       <Button type="cancel" title="Cancel" onClick={() => updateOverlayVisibility(false)} />
       { formState.saving && <p className={savingMessageStyle}>Saving post...</p> }
@@ -699,7 +699,7 @@ Another thing to look at is how we deal with images.
 When storing an image in S3, we
 
 ```js
-import React, { useState, useEffect, useReducer } from 'react'
+import React, { useState, useEffect } from 'react'
 import { css } from 'emotion';
 import { useParams } from 'react-router-dom';
 import { API, Storage } from 'aws-amplify';
@@ -734,7 +734,7 @@ export default function Post() {
       <h1 className={titleStyle}>{post.name}</h1>
       <h3 className={locationStyle}>{post.location}</h3>
       <p>{post.description}</p>
-      <img src={post.image} className={imageStyle} />
+      <img alt="post" src={post.image} className={imageStyle} />
     </>
   )
 }
@@ -873,7 +873,7 @@ $ amplify console
 Now we can try everything out. To start the app, run the `start` command:
 
 ```sh
-$ amplify start
+$ npm start
 ```
 
 ## Hosting
