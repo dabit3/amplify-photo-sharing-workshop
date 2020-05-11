@@ -295,9 +295,9 @@ import { withAuthenticator } from '@aws-amplify/ui-react'
 Next, we'll wrap our default export (the App component) with the `withAuthenticator` HOC:
 
 ```js
-function App() {/* rest of code code */}
+function App() {/* existing code here, no changes */}
 
-// src/App.js, change the default export to this:
+/* src/App.js, change the default export to this: */
 export default withAuthenticator(App)
 ```
 
@@ -356,8 +356,7 @@ The last feature we need to have is image storage. To add image storage, we'll u
 $ amplify add storage
 
 ? Please select from one of the below mentioned services: Content
-? ? Please provide a friendly name for your resource that will be used to label this categ
-ory in the project: images
+? Please provide a friendly name for your resource that will be used to label this category in the project: images
 ? Please provide bucket name: postagram14148f2f4aeb4f259c847e1e27145a2 <use_default>
 ? Who should have access: Auth and guest users
 ? What kind of access do you want for Authenticated users? create, update, read, delete
