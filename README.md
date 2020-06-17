@@ -25,7 +25,7 @@ Now change into the new app directory & install AWS Amplify, AWS Amplify UI Reac
 
 ```bash
 $ cd postagram
-$ npm install aws-amplify emotion uuid react-router-dom @aws-amplify/ui-react@unstable
+$ npm install aws-amplify emotion uuid react-router-dom @aws-amplify/ui-react
 ```
 
 ## Installing the CLI & Initializing a new AWS Amplify Project
