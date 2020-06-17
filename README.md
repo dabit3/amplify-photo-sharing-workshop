@@ -1,4 +1,4 @@
-# Full Stack React with GraphQL and AWS Amplify Workshop
+# Full Stack Cloud Development for Front End Developers
 
 In this workshop we'll learn how to build a full stack cloud application with React, GraphQL, & [Amplify](https://aws-amplify.github.io/)
 
