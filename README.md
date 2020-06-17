@@ -1,6 +1,6 @@
 # Full Stack Cloud Development for Front End Developers
 
-In this workshop we'll learn how to build a full stack cloud application with React, GraphQL, & [Amplify](https://aws-amplify.github.io/)
+In this workshop we'll learn how to build a full stack cloud application with React, GraphQL, & [Amplify](https://docs.amplify.aws/)
 
 ![](jsnationbanner2.jpg)
 
@@ -852,7 +852,7 @@ const contentStyle = css`
 export default withAuthenticator(Router);
 ```
 
-### Deleting the exising data
+### Deleting the existing data
 
 Now the app is ready to test out, but before we do let's delete the existing data in the database. To do so, follow these steps:
 
@@ -1064,7 +1064,7 @@ query listPosts {
 }
 ```
 
-If you'd like to read more about the `@auth` directive, check out the documentation [here](https://aws-amplify.github.io/docs/cli/graphql#auth).
+If you'd like to read more about the `@auth` directive, check out the documentation [here](https://docs.amplify.aws/cli/graphql-transformer/directives#auth).
 
 <!-- ## Real-time -->
 
