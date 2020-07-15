@@ -337,6 +337,8 @@ To do so, open __src/index.css__ and add the following styling:
 }
 ```
 
+> To learn more about theming the Amplify React UI components, check out the documentation [here](https://docs.amplify.aws/ui/customization/theming/q/framework/react)
+
 ### Adding a sign out button
 
 You can also easily add a preconfigured UI component for signing out.
