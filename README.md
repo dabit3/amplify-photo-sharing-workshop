@@ -323,6 +323,17 @@ $ amplify console auth
 > Choose User Pool
 ```
 
+### Adding a sign out button
+
+You can also easily add a preconfigured UI component for signing out.
+
+```js
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
+
+/* Somewhere in the UI */
+<AmplifySignOut />
+```
+
 ### Styling the UI components
 
 Next, let's update the UI component styling by setting styles for the `:root` pseudoclass.
@@ -339,32 +350,22 @@ To do so, open __src/index.css__ and add the following styling:
 
 > To learn more about theming the Amplify React UI components, check out the documentation [here](https://docs.amplify.aws/ui/customization/theming/q/framework/react)
 
-### Adding a sign out button
-
-You can also easily add a preconfigured UI component for signing out.
-
-```js
-import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
-
-/* Somewhere in the UI */
-<AmplifySignOut />
-```
-
 ### Accessing User Data
 
 We can access the user's info now that they are signed in by calling `Auth.currentAuthenticatedUser()` in `useEffect`.
 
 ```js
-import {API, Auth} from 'aws-amplify'
+import { API, Auth } from 'aws-amplify'
 
 useEffect(() => {
-  checkUser();
+  fetchPosts();
+  checkUser(); // new function call
 });
 
 async function checkUser() {
   const user = await Auth.currentAuthenticatedUser();
   console.log('user:', user);
-  console.log('user meta: ', user.signInUserSession.idToken.payload);
+  console.log('user attributes: ', user.attributes);
 }
 ```
 
