@@ -406,11 +406,11 @@ await Storage.put(file.name, file);
 const image = await Storage.get('my-image-key.jpg')
 ```
 
-Now we can start saving images to S3 and we can continue building the Travel app.
+Now we can start saving images to S3 and we can continue building the Photo Sharing App Travel app.
 
-# Travel App
+# Photo Sharing App Travel App
 
-Now that we have the services we need, let's continue by building out the front end of the travel app.
+Now that we have the services we need, let's continue by building out the front end of the app.
 
 ### Creating the folder structure for our app
 
