@@ -1,6 +1,6 @@
-# Full Stack Cloud Development for Front End Developers
+# Build a Photo Sharing App with React and AWS Amplify
 
-In this workshop we'll learn how to build a full stack cloud application with React, GraphQL, & [Amplify](https://aws-amplify.github.io/)
+In this workshop we'll learn how to build a full stack serverless application with React, GraphQL, & [Amplify](https://aws-amplify.github.io/)
 
 ![](banner.jpg)
 
