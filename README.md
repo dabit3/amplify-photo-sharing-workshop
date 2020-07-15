@@ -958,6 +958,8 @@ $ amplify update api
 
 Now, update the GraphQL schema to the following:
 
+__amplify/backend/api/Postagram/schema.graphql__
+
 ```graphql
 type Post @model
   @auth(rules: [
@@ -972,6 +974,12 @@ type Post @model
   image: String
   owner: String
 }
+```
+
+Deploy the changes:
+
+```sh
+amplify push -y
 ```
 
 Now, you will have two types of API access:
