@@ -121,6 +121,8 @@ type Post @model {
 }
 ```
 
+After saving the schema, go back to the CLI and press enter.
+
 ### Deploying the API
 
 To deploy the API, run the push command:
@@ -137,6 +139,8 @@ $ amplify push
 ? Do you want to generate/update all possible GraphQL operations - queries, mutations and subscriptions? Yes
 ? Enter maximum statement depth [increase from default if your schema is deeply nested]: 2
 ```
+
+> Alternately, you can run `amplify push -y` to answer __Yes__ to all questions.
 
 Now the API is live and you can start interacting with it!
 
@@ -317,6 +321,20 @@ Now that you have the authentication service created, you can view it any time i
 $ amplify console auth
 
 > Choose User Pool
+```
+
+### Styling the UI components
+
+Next, let's update the UI component styling by setting styles for the `:root` pseudoclass.
+
+To do so, open __src/index.css__ and add the following styling:
+
+```css
+:root {
+  --amplify-primary-color: #006eff;
+  --amplify-primary-tint: #005ed9;
+  --amplify-primary-shade: #005ed9;
+}
 ```
 
 ### Adding a sign out button
