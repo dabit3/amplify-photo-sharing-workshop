@@ -1,10 +1,10 @@
 {
-    "AppSyncApiName": "amplifytravelapp",
+    "AppSyncApiName": "Postagram",
     "DynamoDBBillingMode": "PAY_PER_REQUEST",
     "DynamoDBEnableServerSideEncryption": "false",
     "AuthCognitoUserPoolId": {
         "Fn::GetAtt": [
-            "authamplifytravelappf8a4af78",
+            "authpostagramcc8cdf2a",
             "Outputs.UserPoolId"
         ]
     }

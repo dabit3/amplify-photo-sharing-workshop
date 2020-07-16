@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useReducer } from 'react'
+import React, { useState, useEffect } from 'react'
 import { css } from 'emotion';
-import Container from './Container'
 import { useParams } from 'react-router-dom';
 import { API, Storage } from 'aws-amplify';
 import { getPost } from './graphql/queries';
@@ -23,7 +22,7 @@ export default function Post() {
       currentPost.image = image;
       updatePost(currentPost);
       updateLoading(false);
-  } catch (err) {
+    } catch (err) {
       console.log('error: ', err)
     }
   }
@@ -34,7 +33,7 @@ export default function Post() {
       <h1 className={titleStyle}>{post.name}</h1>
       <h3 className={locationStyle}>{post.location}</h3>
       <p>{post.description}</p>
-      <img src={post.image} className={imageStyle} />
+      <img alt="post" src={post.image} className={imageStyle} />
     </>
   )
 }

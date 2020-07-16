@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { css } from 'emotion';
 import Button from './Button';
 import { v4 as uuid } from 'uuid';
-import { Storage, API } from 'aws-amplify';
+import { Storage, API, Auth } from 'aws-amplify';
 import { createPost } from './graphql/mutations';
 
+/* Initial state to hold form input, saving state */
 const initialState = {
   name: '',
   description: '',
@@ -17,13 +18,24 @@ const initialState = {
 export default function CreatePost({
   updateOverlayVisibility, updatePosts, posts
 }) {
+  /* 1. Create local state with useState hook */
   const [formState, updateFormState] = useState(initialState)
+
+  /* 2. onChangeText handler updates the form state when a user types int a form field */
+  function onChangeText(e) {
+    e.persist();
+    updateFormState(currentState => ({ ...currentState, [e.target.name]: e.target.value }));
+  }
+
+  /* 3. onChangeFile hanlder will be fired when a user uploads a file  */
   function onChangeFile(e) {
     e.persist();
     if (! e.target.files[0]) return;
     const image = { fileInfo: e.target.files[0], name: `${e.target.files[0].name}_${uuid()}`}
     updateFormState(currentState => ({ ...currentState, file: URL.createObjectURL(e.target.files[0]), image }))
   }
+
+  /* 4. Save the post  */
   async function save() {
     try {
       const { name, description, location, image } = formState;
@@ -34,19 +46,19 @@ export default function CreatePost({
 
       await Storage.put(formState.image.name, formState.image.fileInfo);
       await API.graphql({
-        query: createPost, variables: { input: postInfo }
+        query: createPost,
+        variables: { input: postInfo },
+        authMode: 'AMAZON_COGNITO_USER_POOLS'
       });
-      updatePosts([...posts, { ...postInfo, image: formState.file }]);
+      const { username } = await Auth.currentAuthenticatedUser()
+      updatePosts([...posts, { ...postInfo, image: formState.file, owner: username }]);
       updateFormState(currentState => ({ ...currentState, saving: false }));
       updateOverlayVisibility(false);
     } catch (err) {
       console.log('error: ', err);
     }
   }
-  function onChangeText(e) {
-    e.persist();
-    updateFormState(currentState => ({ ...currentState, [e.target.name]: e.target.value }));
-  }
+
   return (
     <div className={containerStyle}>
       <input
@@ -71,7 +83,7 @@ export default function CreatePost({
         type="file"
         onChange={onChangeFile}
       />
-      { formState.file && <img className={imageStyle} src={formState.file} /> }
+      { formState.file && <img className={imageStyle} alt="preview" src={formState.file} /> }
       <Button title="Create New Post" onClick={save} />
       <Button type="cancel" title="Cancel" onClick={() => updateOverlayVisibility(false)} />
       { formState.saving && <p className={savingMessageStyle}>Saving post...</p> }

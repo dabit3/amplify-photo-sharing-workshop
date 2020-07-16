@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "amplifytravelappf8a4af78_identitypool_f8a4af78",
+    "identityPoolName": "postagramcc8cdf2a_identitypool_cc8cdf2a",
     "allowUnauthenticatedIdentities": true,
-    "resourceNameTruncated": "ampliff8a4af78",
-    "userPoolName": "amplifytravelappf8a4af78_userpool_f8a4af78",
+    "resourceNameTruncated": "postagcc8cdf2a",
+    "userPoolName": "postagramcc8cdf2a_userpool_cc8cdf2a",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,9 +28,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "ampliff8a4af78_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "postagcc8cdf2a_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "resourceName": "amplifytravelappf8a4af78",
+    "sharedId": "cc8cdf2a",
+    "resourceName": "postagramcc8cdf2a",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [

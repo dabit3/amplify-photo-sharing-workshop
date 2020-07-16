@@ -7,13 +7,13 @@ export default function Posts({
 }) {
   return (
     <>
-      <h1>All Posts</h1>
+      <h1>Posts</h1>
       {
         posts.map(post => (
           <Link to={`/post/${post.id}`} className={linkStyle} key={post.id}>
             <div key={post.id} className={postContainer}>
               <h1 className={postTitleStyle}>{post.name}</h1>
-              <img className={imageStyle} src={post.image} />
+              <img alt="post" className={imageStyle} src={post.image} />
             </div>
           </Link>
         ))

@@ -1,41 +1,41 @@
 {
-	"auth": {
-		"amplifytravelappf8a4af78": {
-			"service": "Cognito",
-			"providerPlugin": "awscloudformation",
-			"dependsOn": [],
-			"customAuth": false
-		}
-	},
-	"storage": {
-		"images": {
-			"service": "S3",
-			"providerPlugin": "awscloudformation"
-		}
-	},
-	"api": {
-		"amplifytravelapp": {
-			"service": "AppSync",
-			"providerPlugin": "awscloudformation",
-			"output": {
-				"authConfig": {
-					"additionalAuthenticationProviders": [
-						{
-							"authenticationType": "API_KEY",
-							"apiKeyConfig": {
-								"description": "public",
-								"apiKeyExpirationDays": "365"
-							}
-						}
-					],
-					"defaultAuthentication": {
-						"authenticationType": "AMAZON_COGNITO_USER_POOLS",
-						"userPoolConfig": {
-							"userPoolId": "authamplifytravelappf8a4af78"
-						}
-					}
-				}
-			}
-		}
-	}
+    "api": {
+        "Postagram": {
+            "service": "AppSync",
+            "providerPlugin": "awscloudformation",
+            "output": {
+                "authConfig": {
+                    "additionalAuthenticationProviders": [
+                        {
+                            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+                            "userPoolConfig": {
+                                "userPoolId": "authpostagramcc8cdf2a"
+                            }
+                        }
+                    ],
+                    "defaultAuthentication": {
+                        "authenticationType": "API_KEY",
+                        "apiKeyConfig": {
+                            "description": "public",
+                            "apiKeyExpirationDays": "365"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "auth": {
+        "postagramcc8cdf2a": {
+            "service": "Cognito",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": [],
+            "customAuth": false
+        }
+    },
+    "storage": {
+        "images": {
+            "service": "S3",
+            "providerPlugin": "awscloudformation"
+        }
+    }
 }
