@@ -586,7 +586,7 @@ import React, { useState } from 'react';
 import { css } from 'emotion';
 import Button from './Button';
 import { v4 as uuid } from 'uuid';
-import { Storage, API, Auth } from 'aws-amplify';
+import { Storage, API } from 'aws-amplify';
 import { createPost } from './graphql/mutations';
 
 /* Initial state to hold form input, saving state */
@@ -790,8 +790,6 @@ Another way to do this would be to have some global state management set up and 
 
 Other than routing, the main functionality happening in this component is an `API` call to fetch posts from our API.
 
-
-
 ```js
 import React, { useState, useEffect } from "react";
 import {
@@ -801,7 +799,7 @@ import {
 } from "react-router-dom";
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 import { css } from 'emotion';
-import { API, Storage } from 'aws-amplify';
+import { API, Storage, Auth } from 'aws-amplify';
 import { listPosts } from './graphql/queries';
 
 import Posts from './Posts';
@@ -979,7 +977,7 @@ type Post @model
 Deploy the changes:
 
 ```sh
-amplify push -y
+$ amplify push -y
 ```
 
 Now, you will have two types of API access:
@@ -1005,14 +1003,31 @@ const postData = await API.graphql({
 
 Next we will update the app to create a new route for viewing only the posts that we've created.
 
-To do so, first open __CreatePost.js__ and update the `save` mutation with the following to specify the `authmode`:
+To do so, first open __CreatePost.js__ and update the `save` mutation with the following to specify the `authmode` and set the owner of the post in the local state:
 
 ```js
-await API.graphql({
-  query: createPost,
-  variables: { input: postInfo },
-  authMode: 'AMAZON_COGNITO_USER_POOLS'
-});
+async function save() {
+  try {
+    const { name, description, location, image } = formState;
+    if (!name || !description || !location || !image.name) return;
+    updateFormState(currentState => ({ ...currentState, saving: true }));
+    const postId = uuid();
+    const postInfo = { name, description, location, image: formState.image.name, id: postId };
+
+    await Storage.put(formState.image.name, formState.image.fileInfo);
+    await API.graphql({
+      query: createPost,
+      variables: { input: postInfo },
+      authMode: 'AMAZON_COGNITO_USER_POOLS'
+    }); // updated
+    const { username } = await Auth.currentAuthenticatedUser(); // new
+    updatePosts([...posts, { ...postInfo, image: formState.file, owner: username }]); // updated
+    updateFormState(currentState => ({ ...currentState, saving: false }));
+    updateOverlayVisibility(false);
+  } catch (err) {
+    console.log('error: ', err);
+  }
+}
 ```
 
 Next, open __App.js__.
