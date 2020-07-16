@@ -586,7 +586,7 @@ import React, { useState } from 'react';
 import { css } from 'emotion';
 import Button from './Button';
 import { v4 as uuid } from 'uuid';
-import { Storage, API } from 'aws-amplify';
+import { Storage, API, Auth } from 'aws-amplify';
 import { createPost } from './graphql/mutations';
 
 /* Initial state to hold form input, saving state */
@@ -854,7 +854,7 @@ function Router() {
         { showOverlay && (
           <CreatePost
             updateOverlayVisibility={updateOverlayVisibility}
-            updatePosts={updatePosts}
+            updatePosts={setPostState}
             posts={posts}
           />
         )}
