@@ -1151,6 +1151,14 @@ query listPosts {
 
 If you'd like to read more about the `@auth` directive, check out the documentation [here](https://aws-amplify.github.io/docs/cli/graphql#auth).
 
+## Local mocking
+
+To mock the API, database, and storage locally, you can run the `mock` command:
+
+```sh
+$ amplify mock
+```
+
 ## Removing Services
 
 If at any time, or at the end of this workshop, you would like to delete a service from your project & your account, you can do this by running the `amplify remove` command:

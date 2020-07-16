@@ -69,7 +69,7 @@ function Router() {
         { showOverlay && (
           <CreatePost
             updateOverlayVisibility={updateOverlayVisibility}
-            updatePosts={updatePosts}
+            updatePosts={setPostState}
             posts={posts}
           />
         )}
