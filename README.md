@@ -1,8 +1,8 @@
-# Full Stack Cloud Development for Front End Developers
+# Build a Photo Sharing App with React and AWS Amplify
 
 In this workshop we'll learn how to build a full stack cloud application with React, GraphQL, & [Amplify](https://docs.amplify.aws/)
 
-![](jsnationbanner2.jpg)
+![](banner.jpg)
 
 ### Topics we'll be covering:
 
@@ -121,6 +121,8 @@ type Post @model {
 }
 ```
 
+After saving the schema, go back to the CLI and press enter.
+
 ### Deploying the API
 
 To deploy the API, run the push command:
@@ -137,6 +139,8 @@ $ amplify push
 ? Do you want to generate/update all possible GraphQL operations - queries, mutations and subscriptions? Yes
 ? Enter maximum statement depth [increase from default if your schema is deeply nested]: 2
 ```
+
+> Alternately, you can run `amplify push -y` to answer __Yes__ to all questions.
 
 Now the API is live and you can start interacting with it!
 
@@ -330,21 +334,38 @@ import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 <AmplifySignOut />
 ```
 
+### Styling the UI components
+
+Next, let's update the UI component styling by setting styles for the `:root` pseudoclass.
+
+To do so, open __src/index.css__ and add the following styling:
+
+```css
+:root {
+  --amplify-primary-color: #006eff;
+  --amplify-primary-tint: #005ed9;
+  --amplify-primary-shade: #005ed9;
+}
+```
+
+> To learn more about theming the Amplify React UI components, check out the documentation [here](https://docs.amplify.aws/ui/customization/theming/q/framework/react)
+
 ### Accessing User Data
 
 We can access the user's info now that they are signed in by calling `Auth.currentAuthenticatedUser()` in `useEffect`.
 
 ```js
-import {API, Auth} from 'aws-amplify'
+import { API, Auth } from 'aws-amplify'
 
 useEffect(() => {
-  checkUser();
+  fetchPosts();
+  checkUser(); // new function call
 });
 
 async function checkUser() {
   const user = await Auth.currentAuthenticatedUser();
   console.log('user:', user);
-  console.log('user meta: ', user.signInUserSession.idToken.payload);
+  console.log('user attributes: ', user.attributes);
 }
 ```
 
@@ -385,11 +406,11 @@ await Storage.put(file.name, file);
 const image = await Storage.get('my-image-key.jpg')
 ```
 
-Now we can start saving images to S3 and we can continue building the Travel app.
+Now we can start saving images to S3 and we can continue building the Photo Sharing App Travel app.
 
-# Travel App
+# Photo Sharing App Travel App
 
-Now that we have the services we need, let's continue by building out the front end of the travel app.
+Now that we have the services we need, let's continue by building out the front end of the app.
 
 ### Creating the folder structure for our app
 
@@ -496,7 +517,7 @@ export default function Posts({
 }) {
   return (
     <>
-      <h1>All Posts</h1>
+      <h1>Posts</h1>
       {
         posts.map(post => (
           <Link to={`/post/${post.id}`} className={linkStyle} key={post.id}>
@@ -565,7 +586,7 @@ import React, { useState } from 'react';
 import { css } from 'emotion';
 import Button from './Button';
 import { v4 as uuid } from 'uuid';
-import { Storage, API } from 'aws-amplify';
+import { Storage, API, Auth } from 'aws-amplify';
 import { createPost } from './graphql/mutations';
 
 /* Initial state to hold form input, saving state */
@@ -769,8 +790,6 @@ Another way to do this would be to have some global state management set up and 
 
 Other than routing, the main functionality happening in this component is an `API` call to fetch posts from our API.
 
-
-
 ```js
 import React, { useState, useEffect } from "react";
 import {
@@ -780,7 +799,7 @@ import {
 } from "react-router-dom";
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 import { css } from 'emotion';
-import { API, Storage } from 'aws-amplify';
+import { API, Storage, Auth } from 'aws-amplify';
 import { listPosts } from './graphql/queries';
 
 import Posts from './Posts';
@@ -809,6 +828,9 @@ function Router() {
       return post;
     }));
     /* update the posts array in the local state */
+    setPostState(postsArray);
+  }
+  async function setPostState(postsArray) {
     updatePosts(postsArray);
   }
   return (
@@ -832,7 +854,7 @@ function Router() {
         { showOverlay && (
           <CreatePost
             updateOverlayVisibility={updateOverlayVisibility}
-            updatePosts={updatePosts}
+            updatePosts={setPostState}
             posts={posts}
           />
         )}
@@ -912,114 +934,177 @@ Finally, we can click __Save and Deploy__ to deploy our application!
 
 Now, we can push updates to Master to update our application.
 
-## Removing Services
-
-If at any time, or at the end of this workshop, you would like to delete a service from your project & your account, you can do this by running the `amplify remove` command:
-
-```sh
-$ amplify remove auth
-
-$ amplify push
-```
-
-If you are unsure of what services you have enabled at any time, you can run the `amplify status` command:
-
-```sh
-$ amplify status
-```
-
-`amplify status` will give you the list of resources that are currently enabled in your app.
-
-If you'd like to delete the entire project, you can run the `delete` command:
-
-```sh
-$ amplify delete
-```
-
-## Additional learning & use cases
-
 ## Adding Authorization to the GraphQL API
 
-You can update the AppSync API to use the Cognito Authentication service as the base authentication type.
+You can update the AppSync API to enable multiple authorization modes.
 
-To do so, reconfigure the API:
+In this example, we will update the API to use the both Cognito and API Key to enable a combination of public and private access. This will also enable us to implement authorization for the API.
+
+To enable multiple authorization modes, reconfigure the API:
 
 ```sh
 $ amplify update api
 
 ? Please select from one of the below mentioned services: GraphQL   
 ? Select from the options below: Update auth settings
-? Choose the default authorization type for the API: Amazon Cognito User Pool
-? Configure additional auth types? Y
-? Choose the additional authorization types you want to configure for the API: API key
+? Choose the default authorization type for the API: API key
 ? Enter a description for the API key: public
-? After how many days from now the API key should expire (1-365): 100 <or your preferred expiration>
+? After how many days from now the API key should expire (1-365): 365 <or your preferred expiration>
+? Configure additional auth types? Y
+? Choose the additional authorization types you want to configure for the API: Amazon Cognito User Pool
 ```
 
 Now, update the GraphQL schema to the following:
 
+__amplify/backend/api/Postagram/schema.graphql__
+
 ```graphql
 type Post @model
   @auth(rules: [
-    { allow: owner, ownerField: "username" },
-    { allow: public, operations: [read] }
-  ])
-{
+    { allow: owner },
+    { allow: public, operations: [read] },
+    { allow: private, operations: [read] }
+  ]) {
   id: ID!
   name: String!
   location: String!
   description: String!
   image: String
-  username: String
+  owner: String
 }
+```
+
+Deploy the changes:
+
+```sh
+$ amplify push -y
 ```
 
 Now, you will have two types of API access:
 
-1. Private (Cognito) - to create a post, a user must be signed in. Once they have created a post, they can update and delete their own post. When a query is made, only their `Posts` will be queried from the API
-
+1. Private (Cognito) - to create a post, a user must be signed in. Once they have created a post, they can update and delete their own post. They can also read all posts.
 2. Public (API key) - Any user, regardless if they are signed in, can query for posts or a single post.
 
-To make this secondary public API call from the client, the authorization type needs to be specified in the query:
+Using this combination, you can easily query for just a single user's posts or for all posts.
+
+To make this secondary private API call from the client, the authorization type needs to be specified in the query or mutation:
 
 ```js
 const postData = await API.graphql({
-  query: listPosts,
-  authMode: 'API_KEY'
+  mutation: createPost,
+  authMode: 'AMAZON_COGNITO_USER_POOLS',
+  variables: {
+    input: post
+  }
 });
 ```
 
-Using this combination, you can easily query for just a single user's posts or for all posts.
+### Adding a new route to view only your own posts
+
+Next we will update the app to create a new route for viewing only the posts that we've created.
+
+To do so, first open __CreatePost.js__ and update the `save` mutation with the following to specify the `authmode` and set the owner of the post in the local state:
+
+```js
+async function save() {
+  try {
+    const { name, description, location, image } = formState;
+    if (!name || !description || !location || !image.name) return;
+    updateFormState(currentState => ({ ...currentState, saving: true }));
+    const postId = uuid();
+    const postInfo = { name, description, location, image: formState.image.name, id: postId };
+
+    await Storage.put(formState.image.name, formState.image.fileInfo);
+    await API.graphql({
+      query: createPost,
+      variables: { input: postInfo },
+      authMode: 'AMAZON_COGNITO_USER_POOLS'
+    }); // updated
+    const { username } = await Auth.currentAuthenticatedUser(); // new
+    updatePosts([...posts, { ...postInfo, image: formState.file, owner: username }]); // updated
+    updateFormState(currentState => ({ ...currentState, saving: false }));
+    updateOverlayVisibility(false);
+  } catch (err) {
+    console.log('error: ', err);
+  }
+}
+```
+
+Next, open __App.js__.
+
+Create a new piece of state to hold your own posts named `myPosts`:
+
+```js
+const [myPosts, updateMyPosts] = useState([]);
+```
+
+Next, in the `setPostState` method, update `myPosts` with posts from the signed in user:
+
+```js
+async function setPostState(postsArray) {
+  const user = await Auth.currentAuthenticatedUser();
+  const myPostData = postsArray.filter(p => p.owner === user.username);
+  updateMyPosts(myPostData);
+  updatePosts(postsArray);
+}
+```
+
+Now, add a new route to show your posts:
+
+```js
+<Route exact path="/myposts" >
+  <Posts posts={myPosts} />
+</Route>
+```
+
+Finally, open __Header.js__ and add a link to the new route:
+
+```js
+<Link to="/myposts" className={linkStyle}>My Posts</Link>
+```
+
+Next, test it out:
+
+```sh
+$ npm start
+```
+
+## Additional learning & use cases
 
 ### Relationships
 
 What if we wanted to create a relationship between the Post and another type.
+
+In this example, we add a new `Comment` type and create a relationship using the `@connection` directive. Doing this will enable a one to many relationship between `Post` and `Comment` types.
 
 ```graphql
 # amplify/backend/api/Postagram/schema.graphql
 
 type Post @model
   @auth(rules: [
-    { allow: owner, ownerField: "username" },
-    { allow: public, operations: [read] }
-  ])
-{
+    { allow: owner },
+    { allow: public, operations: [read] },
+    { allow: private, operations: [read] }
+  ]) {
   id: ID!
   name: String!
   location: String!
   description: String!
   image: String
-  username: String
+  owner: String
   comments: [Comment] @connection
 }
 
-type Comment {
+type Comment @model
+  @auth(rules: [
+    { allow: owner },
+    { allow: public, operations: [read] },
+    { allow: private, operations: [read] }
+  ]) {
   id: ID
   message: String
 }
 ```
-
-Because we're updating the way our database is configured by adding relationships which requires a global secondary index, we need to delete the old local database:
 
 Now, we can create relationships between posts and comments. Let's test this out with the following operations:
 
@@ -1065,6 +1150,40 @@ query listPosts {
 ```
 
 If you'd like to read more about the `@auth` directive, check out the documentation [here](https://docs.amplify.aws/cli/graphql-transformer/directives#auth).
+
+## Local mocking
+
+To mock the API, database, and storage locally, you can run the `mock` command:
+
+```sh
+$ amplify mock
+```
+
+## Removing Services
+
+If at any time, or at the end of this workshop, you would like to delete a service from your project & your account, you can do this by running the `amplify remove` command:
+
+```sh
+$ amplify remove auth
+
+$ amplify push
+```
+
+If you are unsure of what services you have enabled at any time, you can run the `amplify status` command:
+
+```sh
+$ amplify status
+```
+
+`amplify status` will give you the list of resources that are currently enabled in your app.
+
+### Deleting the Amplify project and all services
+
+If you'd like to delete the entire project, you can run the `delete` command:
+
+```sh
+$ amplify delete
+```
 
 <!-- ## Real-time -->
 
