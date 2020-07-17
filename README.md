@@ -1103,6 +1103,7 @@ type Comment @model
   ]) {
   id: ID
   message: String
+  owner: String
 }
 ```
 
@@ -1124,7 +1125,7 @@ mutation createPost {
 
 mutation createComment {
   createComment(input: {
-    postCommentsId: "test-id-talk-1"
+    postCommentsId: "test-id-post-1"
     message: "Great post!"
   }) {
     id message
@@ -1141,7 +1142,7 @@ query listPosts {
       comments {
         items {
           message
-          createdBy
+          owner
         }
       }
     }
