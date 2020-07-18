@@ -605,13 +605,13 @@ export default function CreatePost({
   /* 1. Create local state with useState hook */
   const [formState, updateFormState] = useState(initialState)
 
-  /* 2. onChangeText handler updates the form state when a user types int a form field */
+  /* 2. onChangeText handler updates the form state when a user types into a form field */
   function onChangeText(e) {
     e.persist();
     updateFormState(currentState => ({ ...currentState, [e.target.name]: e.target.value }));
   }
 
-  /* 3. onChangeFile hanlder will be fired when a user uploads a file  */
+  /* 3. onChangeFile handler will be fired when a user uploads a file  */
   function onChangeFile(e) {
     e.persist();
     if (! e.target.files[0]) return;
