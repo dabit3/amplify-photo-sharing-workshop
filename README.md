@@ -47,10 +47,10 @@ $ amplify configure
 
 - Specify the AWS Region: us-east-1 || us-west-2 || eu-central-1
 - Specify the username of the new IAM user: amplify-cli-user
-> In the AWS Console, click Next: Permissions, Next: Tags, Next: Review, & Create User to create the new IAM user. Then, return to the command line & press Enter.
+> In the AWS Console, click Next: Permissions, Next: Tags, Next: Review, & Create User to create the new IAM user. Then return to the command line & press Enter.
 - Enter the access key of the newly created user:   
 ? accessKeyId: (<YOUR_ACCESS_KEY_ID>)  
-? secretAccessKey:  (<YOUR_SECRET_ACCESS_KEY>)
+? secretAccessKey: (<YOUR_SECRET_ACCESS_KEY>)
 - Profile Name: amplify-cli-user
 ```
 
@@ -72,7 +72,7 @@ $ amplify init
 - Please choose the profile you want to use: amplify-cli-user
 ```
 
-The Amplify CLI has iniatilized a new project & you will see a new folder: __amplify__ & a new file called `aws-exports.js` in the __src__ directory. These files hold your project configuration.
+The Amplify CLI has initialized a new project & you will see a new folder: __amplify__ & a new file called `aws-exports.js` in the __src__ directory. These files hold your project configuration.
 
 To view the status of the amplify project at any time, you can run the Amplify `status` command:
 
@@ -212,7 +212,7 @@ To do so, we need to define the query, execute the query, store the data in our 
 The main thing to notice in this component is the API call. Take a look at this piece of code:
 
 ```js
-/* Call API.graphql, passing in the query that we'd like to executre. */
+/* Call API.graphql, passing in the query that we'd like to execute. */
 const postData = await API.graphql({ query: listPosts });
 ```
 
@@ -567,14 +567,14 @@ The props this component will receive are the following:
 2. `updatePosts` - This function will allow us to update the main posts array
 3. `posts` - The posts coming back from our API
 
-This component has a lot going on, so before we dive into the code let's walk through what is going on here:
+This component has a lot going on, so before we dive into the code let's walk through what is happening:
 
 1. We create some initial state using the `useState` hook. This state is created using the `initialState` object.
 2. The `onChangeText` handler sets the name, description, and location fields of the post
 3. The `onChangeImage` handler allows the user to upload an image and saves it to state. It also creates a unique image name.
 4. The `save` function does the following:
 - First checks to make sure that all of the form fields are populated
-- Next, it updates the `saving` state to true to show a saving indicator 
+- Next it updates the `saving` state to true to show a saving indicator 
 - We then create a unique ID for the post using the `uuid` library
 - Using the form state and the `uuid`, we create a post object that will be sent to the API.
 - Next, we upload the image to S3 using `Storage.put`, passing in the image name and the file
@@ -900,7 +900,7 @@ $ npm start
 
 ## Hosting
 
-The Amplify Console is a hosting service with continuous integration and continuous deployment.
+The Amplify Console is a hosting service with continuous integration and deployment.
 
 The first thing we need to do is [create a new GitHub repo](https://github.com/new) for this project. Once we've created the repo, we'll copy the URL for the project to the clipboard & initialize git in our local project:
 
