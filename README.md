@@ -994,7 +994,7 @@ const postData = await API.graphql({
   mutation: createPost,
   authMode: 'AMAZON_COGNITO_USER_POOLS',
   variables: {
-    input: post
+    input: postInfo
   }
 });
 ```
