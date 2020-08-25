@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<html lang="en" class="js csstransforms3d">
+<head>
+  <meta charset="utf-8">
+  <meta property="og:title" content="Amplify Days ANZ Workshop" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="generator" content="Hugo 0.74.2" />
+  <meta name="description" content="My AWS Workshop">
+<meta name="author" content="Nader Dabit, Ross McKillop">
+
+  <link rel="shortcut icon" href="https://a0.awsstatic.com/libra-css/images/site/fav/favicon.ico" type="image/ico" />
+<link rel="icon" href="https://a0.awsstatic.com/libra-css/images/site/fav/favicon.ico" type="image/ico" />
+
+  <title>Creating New Posts :: Amplify Days ANZ Workshop</title>
+
+  
+  <link href="../css/nucleus.css" rel="stylesheet">
+  <link href="../css/fontawesome-all.min.css" rel="stylesheet">
+  <link href="../css/hybrid.css" rel="stylesheet">
+  <link href="../css/featherlight.min.css" rel="stylesheet">
+  <link href="../css/perfect-scrollbar.min.css" rel="stylesheet">
+  <link href="../css/auto-complete.css" rel="stylesheet">
+  <link href="../css/atom-one-dark-reasonable.css" rel="stylesheet">
+  <link href="../css/theme.css" rel="stylesheet">
+  <link href="../css/hugo-theme.css" rel="stylesheet">
+  
+  <link href="../css/theme-aws.css" rel="stylesheet">
+  
+
+  <script src="../js/jquery-3.3.1.min.js"></script>
+
+  <style>
+    :root #header + #content > #left > #rlblock_left{
+        display:none !important;
+    }
+    
+      :not(pre) > code + span.copy-to-clipboard {
+          display: none;
+      }
+    
+  </style>
+  
+</head>
+
+<body class="" data-url="../50_photo_sharing_app/20_create_post.html">
+  <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <div>
+    <a href="../" title="Go home">
+        <img style="vertical-align:middle" src="../images/logo.png" height="70px" />
+    </a>
+</div>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../js/lunr.min.js"></script>
+<script type="text/javascript" src="../js/auto-complete.js"></script>
+<script type="text/javascript">
+    
+        var baseurl = "";
+    
+</script>
+<script type="text/javascript" src="../js/search.js"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/00_intro.html" title="Intro" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../00_intro.html">
+          Intro
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/10_getting_started.html" title="Getting Started" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../10_getting_started.html">
+          Getting Started
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/10_getting_started/00_create_react_app.html" title="Create React App" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../10_getting_started/00_create_react_app.html">
+          Create React App
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/10_getting_started/10_configure_amplify.html" title="Configure Amplify" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../10_getting_started/10_configure_amplify.html">
+          Configure Amplify
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/20_api.html" title="API" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../20_api.html">
+          API
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/20_api/00_graphql.html" title="Adding a GraphQL API" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../20_api/00_graphql.html">
+          Adding a GraphQL API
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/20_api/10_deploying_the_api.html" title="Deploying the API" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../20_api/10_deploying_the_api.html">
+          Deploying the API
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/20_api/20_updating_react.html" title="Using GraphQL with React" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../20_api/20_updating_react.html">
+          Using GraphQL with React
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/30_authentication.html" title="Authentication" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../30_authentication.html">
+          Authentication
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/30_authentication/00_setting_up_auth.html" title="Adding Authentication" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../30_authentication/00_setting_up_auth.html">
+          Adding Authentication
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/30_authentication/10_adding_auth_to_ui.html" title="Authentication in React" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../30_authentication/10_adding_auth_to_ui.html">
+          Authentication in React
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/40_storage.html" title="Storage" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../40_storage.html">
+          Storage
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/40_storage/00_image_storage_with_s3.html" title="Image Storage with Amazon S3" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../40_storage/00_image_storage_with_s3.html">
+          Image Storage with Amazon S3
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/50_photo_sharing_app.html" title="Photo Sharing App" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="../50_photo_sharing_app.html">
+          Photo Sharing App
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/50_photo_sharing_app/00_app_setup.html" title="App Setup" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../50_photo_sharing_app/00_app_setup.html">
+          App Setup
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/50_photo_sharing_app/10_posts_component.html" title="Displaying Posts" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../50_photo_sharing_app/10_posts_component.html">
+          Displaying Posts
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/50_photo_sharing_app/20_create_post.html" title="Creating New Posts" class="dd-item 
+        parent
+        active
+        
+        ">
+      <a href="../50_photo_sharing_app/20_create_post.html">
+          Creating New Posts
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/50_photo_sharing_app/30_post_component.html" title="Fetching Posts via the GraphQL API" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../50_photo_sharing_app/30_post_component.html">
+          Fetching Posts via the GraphQL API
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/50_photo_sharing_app/40_react_router.html" title="React Router" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../50_photo_sharing_app/40_react_router.html">
+          React Router
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/50_photo_sharing_app/50_try_it_out.html" title="Try it Out!" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../50_photo_sharing_app/50_try_it_out.html">
+          Try it Out!
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/50_photo_sharing_app/60_adding_authorization.html" title="Adding Authorization to the GraphQL API" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../50_photo_sharing_app/60_adding_authorization.html">
+          Adding Authorization to the GraphQL API
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/50_photo_sharing_app/70_hosting.html" title="Hosting" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../50_photo_sharing_app/70_hosting.html">
+          Hosting
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/60_extra_credit.html" title="Extra Credit - Additional Resources" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../60_extra_credit.html">
+          Extra Credit - Additional Resources
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/60_extra_credit/00_relationships.html" title="Relationships" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../60_extra_credit/00_relationships.html">
+          Relationships
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/60_extra_credit/10_mocking.html" title="Local Mocking" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../60_extra_credit/10_mocking.html">
+          Local Mocking
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/60_extra_credit/20_cleaning_up.html" title="Cleaning Up" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../60_extra_credit/20_cleaning_up.html">
+          Cleaning Up
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+
+    
+    <section id="footer">
+      <left>
+
+    <h5 class="copyright">&copy; 2020 Amazon Web Services, Inc. or its Affiliates. All rights reserved.<h5>
+
+</left>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+
+  <section id="body">
+    <div id="overlay"></div>
+    <div class="padding highlightable">
+      
+      <div>
+        <div id="top-bar">
+          
+          
+          <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+            <span id="sidebar-toggle-span">
+              <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                <i class="fa fa-bars"></i>
+              </a>
+            </span>
+            
+            <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+            
+            <span class="links">
+              
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href='../'>Amplify Days ANZ</a> > <a href='../50_photo_sharing_app.html'>Photo Sharing App</a> > Creating New Posts
+          
+          
+          
+          
+          
+          
+            </span>
+          </div>
+          
+          <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#createpostjs">CreatePost.js</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+          
+        </div>
+      </div>
+      
+
+      
+        <div id="body-inner">
+          <h1>Creating New Posts</h1>
+          
+          
+
+
+
+	<h2 id="createpostjs">CreatePost.js</h2>
+<p>The next component we&rsquo;ll create is <code>CreatePost</code>. This component is a form which will be displayed to the user as an <code>overlay</code> or a <code>modal</code>.  In it, the user will be able to toggle the overlay to show and hide it, and also be able to create a new post.</p>
+<p>The props this component will receive are the following:</p>
+<ol>
+<li><code>updateOverlayVisibility</code> - This function will toggle the overlay to show/hide it</li>
+<li><code>updatePosts</code> - This function will allow us to update the main posts array</li>
+<li><code>posts</code> - The posts coming back from our API</li>
+</ol>
+<p>This component has a lot going on, so before we dive into the code, let&rsquo;s walk through what is happening.</p>
+<ol>
+<li>We create some initial state using the <code>useState</code> hook. This state is created using the <code>initialState</code> object.</li>
+<li>The <code>onChangeText</code> handler sets the name, description, and location fields of the post</li>
+<li>The <code>onChangeImage</code> handler allows the user to upload an image and saves it to state. It also creates a unique image name.</li>
+<li>The <code>save</code> function does the following:
+<ul>
+<li>First checks to ensure that all of the form fields are populated</li>
+<li>Next it updates the <code>saving</code> state to true to show a saving indicator</li>
+<li>We then create a unique ID for the post using the <code>uuid</code> library</li>
+<li>Using the form state and the <code>uuid</code>, we create a post object that will be sent to the API</li>
+<li>Next, we upload the image to S3 using <code>Storage.put</code>, passing in the image name and the file</li>
+<li>Once the image upload is successful, we create the <code>post</code> in our GraphQL API</li>
+<li>Finally, we update the local state, close the popup, and update the local <code>posts</code> array with the new post</li>
+</ul>
+</li>
+</ol>
+<p>Paste the code below into the <strong>src/CreatePost.js</strong> file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#75715e">// CreatePost.js
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span>, { <span style="color:#a6e22e">useState</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;react&#39;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">css</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;emotion&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Button</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./Button&#39;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">v4</span> <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">uuid</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;uuid&#39;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Storage</span>, <span style="color:#a6e22e">API</span>, <span style="color:#a6e22e">Auth</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;aws-amplify&#39;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">createPost</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./graphql/mutations&#39;</span>;
+
+<span style="color:#75715e">/* Initial state to hold form input, saving state */</span>
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">initialState</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+  <span style="color:#a6e22e">description</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+  <span style="color:#a6e22e">image</span><span style="color:#f92672">:</span> {},
+  <span style="color:#a6e22e">file</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+  <span style="color:#a6e22e">location</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+  <span style="color:#a6e22e">saving</span>: <span style="color:#66d9ef">false</span>
+};
+
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">CreatePost</span>({
+  <span style="color:#a6e22e">updateOverlayVisibility</span>, <span style="color:#a6e22e">updatePosts</span>, <span style="color:#a6e22e">posts</span>
+}) {
+
+  <span style="color:#75715e">/* 1. Create local state with useState hook */</span>
+  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">formState</span>, <span style="color:#a6e22e">updateFormState</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#a6e22e">initialState</span>)
+
+  <span style="color:#75715e">/* 2. onChangeText handler updates the form state when a user types into a form field */</span>
+  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">onChangeText</span>(<span style="color:#a6e22e">e</span>) {
+    <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">persist</span>();
+    <span style="color:#a6e22e">updateFormState</span>(<span style="color:#a6e22e">currentState</span> <span style="color:#f92672">=&gt;</span> ({ ...<span style="color:#a6e22e">currentState</span>, [<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">name</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">value</span> }));
+  }
+
+  <span style="color:#75715e">/* 3. onChangeFile handler will be fired when a user uploads a file  */</span>
+  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">onChangeFile</span>(<span style="color:#a6e22e">e</span>) {
+    <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">persist</span>();
+    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">files</span>[<span style="color:#ae81ff">0</span>]) <span style="color:#66d9ef">return</span>;
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">image</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">fileInfo</span>: <span style="color:#66d9ef">e.target.files</span>[<span style="color:#ae81ff">0</span>], <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">files</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">_</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">uuid</span>()<span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>}
+    <span style="color:#a6e22e">updateFormState</span>(<span style="color:#a6e22e">currentState</span> <span style="color:#f92672">=&gt;</span> ({ ...<span style="color:#a6e22e">currentState</span>, <span style="color:#a6e22e">file</span>: <span style="color:#66d9ef">URL.createObjectURL</span>(<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">files</span>[<span style="color:#ae81ff">0</span>]), <span style="color:#a6e22e">image</span> }))
+  }
+
+  <span style="color:#75715e">/* 4. Save the post  */</span>
+  <span style="color:#a6e22e">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">save() {</span>
+    <span style="color:#66d9ef">try</span> {
+      <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">description</span>, <span style="color:#a6e22e">location</span>, <span style="color:#a6e22e">image</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">formState</span>;
+      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">name</span> <span style="color:#f92672">||</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">description</span> <span style="color:#f92672">||</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">location</span> <span style="color:#f92672">||</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">image</span>.<span style="color:#a6e22e">name</span>) <span style="color:#66d9ef">return</span>;
+      <span style="color:#a6e22e">updateFormState</span>(<span style="color:#a6e22e">currentState</span> <span style="color:#f92672">=&gt;</span> ({ ...<span style="color:#a6e22e">currentState</span>, <span style="color:#a6e22e">saving</span>: <span style="color:#66d9ef">true</span> }));
+      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">postId</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">uuid</span>();
+      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">postInfo</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">description</span>, <span style="color:#a6e22e">location</span>, <span style="color:#a6e22e">image</span>: <span style="color:#66d9ef">formState.image.name</span>, <span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">postId</span> };
+
+      <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">Storage</span>.<span style="color:#a6e22e">put</span>(<span style="color:#a6e22e">formState</span>.<span style="color:#a6e22e">image</span>.<span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">formState</span>.<span style="color:#a6e22e">image</span>.<span style="color:#a6e22e">fileInfo</span>);
+      <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">API</span>.<span style="color:#a6e22e">graphql</span>({
+        <span style="color:#a6e22e">query</span>: <span style="color:#66d9ef">createPost</span>, <span style="color:#a6e22e">variables</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">input</span>: <span style="color:#66d9ef">postInfo</span> }
+      });
+      <span style="color:#a6e22e">updatePosts</span>([...<span style="color:#a6e22e">posts</span>, { ...<span style="color:#a6e22e">postInfo</span>, <span style="color:#a6e22e">image</span>: <span style="color:#66d9ef">formState.file</span> }]);
+      <span style="color:#a6e22e">updateFormState</span>(<span style="color:#a6e22e">currentState</span> <span style="color:#f92672">=&gt;</span> ({ ...<span style="color:#a6e22e">currentState</span>, <span style="color:#a6e22e">saving</span>: <span style="color:#66d9ef">false</span> }));
+      <span style="color:#a6e22e">updateOverlayVisibility</span>(<span style="color:#66d9ef">false</span>);
+    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
+      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;error: &#39;</span>, <span style="color:#a6e22e">err</span>);
+    }
+  }
+
+  <span style="color:#66d9ef">return</span> (
+    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">containerStyle</span>}&gt;
+      &lt;<span style="color:#f92672">input</span>
+        <span style="color:#a6e22e">placeholder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Post name&#34;</span>
+        <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;name&#34;</span>
+        <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">inputStyle</span>}
+        <span style="color:#a6e22e">onChange</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">onChangeText</span>}
+      /&gt;
+      &lt;<span style="color:#f92672">input</span>
+        <span style="color:#a6e22e">placeholder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Location&#34;</span>
+        <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;location&#34;</span>
+        <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">inputStyle</span>}
+        <span style="color:#a6e22e">onChange</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">onChangeText</span>}
+      /&gt;
+      &lt;<span style="color:#f92672">input</span>
+        <span style="color:#a6e22e">placeholder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Description&#34;</span>
+        <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;description&#34;</span>
+        <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">inputStyle</span>}
+        <span style="color:#a6e22e">onChange</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">onChangeText</span>}
+      /&gt;
+      &lt;<span style="color:#f92672">input</span> 
+        <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;file&#34;</span>
+        <span style="color:#a6e22e">onChange</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">onChangeFile</span>}
+      /&gt;
+      { <span style="color:#a6e22e">formState</span>.<span style="color:#a6e22e">file</span> <span style="color:#f92672">&amp;&amp;</span> &lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">imageStyle</span>} <span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;preview&#34;</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">formState</span>.<span style="color:#a6e22e">file</span>} /&gt; }
+      &lt;<span style="color:#f92672">Button</span> <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Create New Post&#34;</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">save</span>} /&gt;
+      &lt;<span style="color:#f92672">Button</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cancel&#34;</span> <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Cancel&#34;</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{() <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">updateOverlayVisibility</span>(<span style="color:#66d9ef">false</span>)} /&gt;
+      { <span style="color:#a6e22e">formState</span>.<span style="color:#a6e22e">saving</span> <span style="color:#f92672">&amp;&amp;</span> &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">savingMessageStyle</span>}&gt;<span style="color:#a6e22e">Saving</span> <span style="color:#a6e22e">post</span>...&lt;/<span style="color:#f92672">p</span>&gt; }
+    &lt;/<span style="color:#f92672">div</span>&gt;
+  )
+}
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">inputStyle</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">css</span><span style="color:#e6db74">`
+</span><span style="color:#e6db74">  margin-bottom: 10px;
+</span><span style="color:#e6db74">  outline: none;
+</span><span style="color:#e6db74">  padding: 7px;
+</span><span style="color:#e6db74">  border: 1px solid #ddd;
+</span><span style="color:#e6db74">  font-size: 16px;
+</span><span style="color:#e6db74">  border-radius: 4px;
+</span><span style="color:#e6db74">`</span>
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">imageStyle</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">css</span><span style="color:#e6db74">`
+</span><span style="color:#e6db74">  height: 120px;
+</span><span style="color:#e6db74">  margin: 10px 0px;
+</span><span style="color:#e6db74">  object-fit: contain;
+</span><span style="color:#e6db74">`</span>
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">containerStyle</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">css</span><span style="color:#e6db74">`
+</span><span style="color:#e6db74">  display: flex;
+</span><span style="color:#e6db74">  flex-direction: column;
+</span><span style="color:#e6db74">  width: 400px;
+</span><span style="color:#e6db74">  height: 420px;
+</span><span style="color:#e6db74">  position: fixed;
+</span><span style="color:#e6db74">  left: 0;
+</span><span style="color:#e6db74">  border-radius: 4px;
+</span><span style="color:#e6db74">  top: 0;
+</span><span style="color:#e6db74">  margin-left: calc(50vw - 220px);
+</span><span style="color:#e6db74">  margin-top: calc(50vh - 230px);
+</span><span style="color:#e6db74">  background-color: white;
+</span><span style="color:#e6db74">  border: 1px solid #ddd;
+</span><span style="color:#e6db74">  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.125rem 0.25rem;
+</span><span style="color:#e6db74">  padding: 20px;
+</span><span style="color:#e6db74">`</span>
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">savingMessageStyle</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">css</span><span style="color:#e6db74">`
+</span><span style="color:#e6db74">  margin-bottom: 0px;
+</span><span style="color:#e6db74">`</span>
+</code></pre></div>
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../50_photo_sharing_app/10_posts_component.html" title="Displaying Posts"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="../50_photo_sharing_app/30_post_component.html" title="Fetching Posts via the GraphQL API" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../js/clipboard.min.js"></script>
+    <script src="../js/perfect-scrollbar.min.js"></script>
+    <script src="../js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="../js/jquery.sticky.js"></script>
+    <script src="../js/featherlight.min.js"></script>
+    <script src="../js/html5shiv-printshiv.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../js/modernizr.custom-3.6.0.js"></script>
+    <script src="../js/learn.js"></script>
+    <script src="../js/hugo-learn.js"></script>
+
+    <link href="../mermaid/mermaid.css" rel="stylesheet" />
+    <script src="../mermaid/mermaid.js"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <div id = 'kinesisStreamName' title = ""/></div>
+<div id = 'cognitoPoolId' title = ""/></div>
+<div id = 'awsRegion' title = ""/></div>
+<div id = 'contentId' title = ""/></div>
+<div id = 'language' title = "en"/></div>
+<div id = 'versions' title = ""/></div>
+
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js"></script>
+<script src="../js/kinesis.js"></script>
+  </body>
+</html>

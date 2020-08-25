@@ -1,0 +1,9 @@
+<div id = 'kinesisStreamName' title = "{{ $.Site.Params.kinesisstreamname}}"/></div>
+<div id = 'cognitoPoolId' title = "{{ $.Site.Params.cognitopoolid}}"/></div>
+<div id = 'awsRegion' title = "{{ $.Site.Params.awsregion}}"/></div>
+<div id = 'contentId' title = "{{ $.Site.Params.contentid}}"/></div>
+<div id = 'language' title = "{{ $.Site.Language}}"/></div>
+<div id = 'versions' title = "{{ $.Site.Params.contentversion}}"/></div>
+
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js"></script>
+<script src="{{"js/kinesis.js" | relURL}}"></script>

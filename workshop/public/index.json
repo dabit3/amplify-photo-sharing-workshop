@@ -1,0 +1,108 @@
+[
+	{	"pageTitle": "Index",
+		"relativePagePath": "/en/"
+	},
+	{
+		"pageTitle": "Intro",
+		"relativePagePath": "/00_intro.html"
+	},
+	{
+		"pageTitle": "Getting Started",
+		"relativePagePath": "/10_getting_started.html"
+	},
+	{
+		"pageTitle": "Create React App",
+		"relativePagePath": "/10_getting_started/00_create_react_app.html"
+	},
+	{
+		"pageTitle": "Configure Amplify",
+		"relativePagePath": "/10_getting_started/10_configure_amplify.html"
+	},
+	{
+		"pageTitle": "API",
+		"relativePagePath": "/20_api.html"
+	},
+	{
+		"pageTitle": "Adding a GraphQL API",
+		"relativePagePath": "/20_api/00_graphql.html"
+	},
+	{
+		"pageTitle": "Deploying the API",
+		"relativePagePath": "/20_api/10_deploying_the_api.html"
+	},
+	{
+		"pageTitle": "Using GraphQL with React",
+		"relativePagePath": "/20_api/20_updating_react.html"
+	},
+	{
+		"pageTitle": "Authentication",
+		"relativePagePath": "/30_authentication.html"
+	},
+	{
+		"pageTitle": "Adding Authentication",
+		"relativePagePath": "/30_authentication/00_setting_up_auth.html"
+	},
+	{
+		"pageTitle": "Authentication in React",
+		"relativePagePath": "/30_authentication/10_adding_auth_to_ui.html"
+	},
+	{
+		"pageTitle": "Storage",
+		"relativePagePath": "/40_storage.html"
+	},
+	{
+		"pageTitle": "Image Storage with Amazon S3",
+		"relativePagePath": "/40_storage/00_image_storage_with_s3.html"
+	},
+	{
+		"pageTitle": "Photo Sharing App",
+		"relativePagePath": "/50_photo_sharing_app.html"
+	},
+	{
+		"pageTitle": "App Setup",
+		"relativePagePath": "/50_photo_sharing_app/00_app_setup.html"
+	},
+	{
+		"pageTitle": "Displaying Posts",
+		"relativePagePath": "/50_photo_sharing_app/10_posts_component.html"
+	},
+	{
+		"pageTitle": "Creating New Posts",
+		"relativePagePath": "/50_photo_sharing_app/20_create_post.html"
+	},
+	{
+		"pageTitle": "Fetching Posts via the GraphQL API",
+		"relativePagePath": "/50_photo_sharing_app/30_post_component.html"
+	},
+	{
+		"pageTitle": "React Router",
+		"relativePagePath": "/50_photo_sharing_app/40_react_router.html"
+	},
+	{
+		"pageTitle": "Try it Out!",
+		"relativePagePath": "/50_photo_sharing_app/50_try_it_out.html"
+	},
+	{
+		"pageTitle": "Adding Authorization to the GraphQL API",
+		"relativePagePath": "/50_photo_sharing_app/60_adding_authorization.html"
+	},
+	{
+		"pageTitle": "Hosting",
+		"relativePagePath": "/50_photo_sharing_app/70_hosting.html"
+	},
+	{
+		"pageTitle": "Extra Credit - Additional Resources",
+		"relativePagePath": "/60_extra_credit.html"
+	},
+	{
+		"pageTitle": "Relationships",
+		"relativePagePath": "/60_extra_credit/00_relationships.html"
+	},
+	{
+		"pageTitle": "Local Mocking",
+		"relativePagePath": "/60_extra_credit/10_mocking.html"
+	},
+	{
+		"pageTitle": "Cleaning Up",
+		"relativePagePath": "/60_extra_credit/20_cleaning_up.html"
+	}]

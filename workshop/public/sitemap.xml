@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2020-07-27T21:07:03+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/00_intro.html</loc>
+    <lastmod>2020-07-23T19:22:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/10_getting_started/00_create_react_app.html</loc>
+    <lastmod>2020-07-23T20:37:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/10_getting_started.html</loc>
+    <lastmod>2020-07-23T20:37:07+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/10_getting_started/10_configure_amplify.html</loc>
+    <lastmod>2020-07-23T20:52:29+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/20_api/00_graphql.html</loc>
+    <lastmod>2020-07-23T21:30:53+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/20_api.html</loc>
+    <lastmod>2020-07-23T21:15:37+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/20_api/10_deploying_the_api.html</loc>
+    <lastmod>2020-07-23T21:34:17+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/20_api/20_updating_react.html</loc>
+    <lastmod>2020-07-23T21:38:51+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/30_authentication/00_setting_up_auth.html</loc>
+    <lastmod>2020-07-23T21:49:08+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/30_authentication.html</loc>
+    <lastmod>2020-07-23T21:45:07+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/30_authentication/10_adding_auth_to_ui.html</loc>
+    <lastmod>2020-07-23T21:49:28+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/40_storage/00_image_storage_with_s3.html</loc>
+    <lastmod>2020-07-27T18:45:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/40_storage.html</loc>
+    <lastmod>2020-07-27T18:43:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/50_photo_sharing_app/00_app_setup.html</loc>
+    <lastmod>2020-07-27T19:37:23+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/50_photo_sharing_app.html</loc>
+    <lastmod>2020-07-27T19:33:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/50_photo_sharing_app/10_posts_component.html</loc>
+    <lastmod>2020-07-27T19:47:27+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/50_photo_sharing_app/20_create_post.html</loc>
+    <lastmod>2020-07-27T19:59:50+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/50_photo_sharing_app/30_post_component.html</loc>
+    <lastmod>2020-07-27T20:01:20+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/50_photo_sharing_app/40_react_router.html</loc>
+    <lastmod>2020-07-27T20:17:12+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/50_photo_sharing_app/50_try_it_out.html</loc>
+    <lastmod>2020-07-27T20:25:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/50_photo_sharing_app/60_adding_authorization.html</loc>
+    <lastmod>2020-07-27T20:44:03+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/50_photo_sharing_app/70_hosting.html</loc>
+    <lastmod>2020-07-27T20:51:09+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/60_extra_credit/00_relationships.html</loc>
+    <lastmod>2020-07-27T20:55:53+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/60_extra_credit.html</loc>
+    <lastmod>2020-07-27T20:53:10+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/60_extra_credit/10_mocking.html</loc>
+    <lastmod>2020-07-27T21:00:35+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/60_extra_credit/20_cleaning_up.html</loc>
+    <lastmod>2020-07-27T21:07:03+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories.html</loc>
+  </url>
+  
+  <url>
+    <loc>/tags.html</loc>
+  </url>
+  
+</urlset>

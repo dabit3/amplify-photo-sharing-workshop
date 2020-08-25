@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Configure Amplify on Amplify Days ANZ Workshop</title>
+    <link>/10_getting_started/10_configure_amplify.html</link>
+    <description>Recent content in Configure Amplify on Amplify Days ANZ Workshop</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Thu, 23 Jul 2020 20:52:29 +0800</lastBuildDate>
+    
+	<atom:link href="/10_getting_started/10_configure_amplify/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>

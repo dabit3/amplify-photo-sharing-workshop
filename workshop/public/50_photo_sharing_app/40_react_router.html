@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<html lang="en" class="js csstransforms3d">
+<head>
+  <meta charset="utf-8">
+  <meta property="og:title" content="Amplify Days ANZ Workshop" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="generator" content="Hugo 0.74.2" />
+  <meta name="description" content="My AWS Workshop">
+<meta name="author" content="Nader Dabit, Ross McKillop">
+
+  <link rel="shortcut icon" href="https://a0.awsstatic.com/libra-css/images/site/fav/favicon.ico" type="image/ico" />
+<link rel="icon" href="https://a0.awsstatic.com/libra-css/images/site/fav/favicon.ico" type="image/ico" />
+
+  <title>React Router :: Amplify Days ANZ Workshop</title>
+
+  
+  <link href="../css/nucleus.css" rel="stylesheet">
+  <link href="../css/fontawesome-all.min.css" rel="stylesheet">
+  <link href="../css/hybrid.css" rel="stylesheet">
+  <link href="../css/featherlight.min.css" rel="stylesheet">
+  <link href="../css/perfect-scrollbar.min.css" rel="stylesheet">
+  <link href="../css/auto-complete.css" rel="stylesheet">
+  <link href="../css/atom-one-dark-reasonable.css" rel="stylesheet">
+  <link href="../css/theme.css" rel="stylesheet">
+  <link href="../css/hugo-theme.css" rel="stylesheet">
+  
+  <link href="../css/theme-aws.css" rel="stylesheet">
+  
+
+  <script src="../js/jquery-3.3.1.min.js"></script>
+
+  <style>
+    :root #header + #content > #left > #rlblock_left{
+        display:none !important;
+    }
+    
+      :not(pre) > code + span.copy-to-clipboard {
+          display: none;
+      }
+    
+  </style>
+  
+</head>
+
+<body class="" data-url="../50_photo_sharing_app/40_react_router.html">
+  <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <div>
+    <a href="../" title="Go home">
+        <img style="vertical-align:middle" src="../images/logo.png" height="70px" />
+    </a>
+</div>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../js/lunr.min.js"></script>
+<script type="text/javascript" src="../js/auto-complete.js"></script>
+<script type="text/javascript">
+    
+        var baseurl = "";
+    
+</script>
+<script type="text/javascript" src="../js/search.js"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/00_intro.html" title="Intro" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../00_intro.html">
+          Intro
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/10_getting_started.html" title="Getting Started" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../10_getting_started.html">
+          Getting Started
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/10_getting_started/00_create_react_app.html" title="Create React App" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../10_getting_started/00_create_react_app.html">
+          Create React App
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/10_getting_started/10_configure_amplify.html" title="Configure Amplify" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../10_getting_started/10_configure_amplify.html">
+          Configure Amplify
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/20_api.html" title="API" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../20_api.html">
+          API
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/20_api/00_graphql.html" title="Adding a GraphQL API" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../20_api/00_graphql.html">
+          Adding a GraphQL API
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/20_api/10_deploying_the_api.html" title="Deploying the API" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../20_api/10_deploying_the_api.html">
+          Deploying the API
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/20_api/20_updating_react.html" title="Using GraphQL with React" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../20_api/20_updating_react.html">
+          Using GraphQL with React
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/30_authentication.html" title="Authentication" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../30_authentication.html">
+          Authentication
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/30_authentication/00_setting_up_auth.html" title="Adding Authentication" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../30_authentication/00_setting_up_auth.html">
+          Adding Authentication
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/30_authentication/10_adding_auth_to_ui.html" title="Authentication in React" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../30_authentication/10_adding_auth_to_ui.html">
+          Authentication in React
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/40_storage.html" title="Storage" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../40_storage.html">
+          Storage
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/40_storage/00_image_storage_with_s3.html" title="Image Storage with Amazon S3" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../40_storage/00_image_storage_with_s3.html">
+          Image Storage with Amazon S3
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/50_photo_sharing_app.html" title="Photo Sharing App" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="../50_photo_sharing_app.html">
+          Photo Sharing App
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/50_photo_sharing_app/00_app_setup.html" title="App Setup" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../50_photo_sharing_app/00_app_setup.html">
+          App Setup
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/50_photo_sharing_app/10_posts_component.html" title="Displaying Posts" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../50_photo_sharing_app/10_posts_component.html">
+          Displaying Posts
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/50_photo_sharing_app/20_create_post.html" title="Creating New Posts" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../50_photo_sharing_app/20_create_post.html">
+          Creating New Posts
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/50_photo_sharing_app/30_post_component.html" title="Fetching Posts via the GraphQL API" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../50_photo_sharing_app/30_post_component.html">
+          Fetching Posts via the GraphQL API
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/50_photo_sharing_app/40_react_router.html" title="React Router" class="dd-item 
+        parent
+        active
+        
+        ">
+      <a href="../50_photo_sharing_app/40_react_router.html">
+          React Router
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/50_photo_sharing_app/50_try_it_out.html" title="Try it Out!" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../50_photo_sharing_app/50_try_it_out.html">
+          Try it Out!
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/50_photo_sharing_app/60_adding_authorization.html" title="Adding Authorization to the GraphQL API" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../50_photo_sharing_app/60_adding_authorization.html">
+          Adding Authorization to the GraphQL API
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/50_photo_sharing_app/70_hosting.html" title="Hosting" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../50_photo_sharing_app/70_hosting.html">
+          Hosting
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/60_extra_credit.html" title="Extra Credit - Additional Resources" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../60_extra_credit.html">
+          Extra Credit - Additional Resources
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/60_extra_credit/00_relationships.html" title="Relationships" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../60_extra_credit/00_relationships.html">
+          Relationships
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/60_extra_credit/10_mocking.html" title="Local Mocking" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../60_extra_credit/10_mocking.html">
+          Local Mocking
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/60_extra_credit/20_cleaning_up.html" title="Cleaning Up" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../60_extra_credit/20_cleaning_up.html">
+          Cleaning Up
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+
+    
+    <section id="footer">
+      <left>
+
+    <h5 class="copyright">&copy; 2020 Amazon Web Services, Inc. or its Affiliates. All rights reserved.<h5>
+
+</left>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+
+  <section id="body">
+    <div id="overlay"></div>
+    <div class="padding highlightable">
+      
+      <div>
+        <div id="top-bar">
+          
+          
+          <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+            <span id="sidebar-toggle-span">
+              <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                <i class="fa fa-bars"></i>
+              </a>
+            </span>
+            
+            <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+            
+            <span class="links">
+              
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href='../'>Amplify Days ANZ</a> > <a href='../50_photo_sharing_app.html'>Photo Sharing App</a> > React Router
+          
+          
+          
+          
+          
+          
+            </span>
+          </div>
+          
+          <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+          
+        </div>
+      </div>
+      
+
+      
+        <div id="body-inner">
+          <h1>React Router</h1>
+          
+          
+
+
+
+	<p>Next we need to create the router in <strong>App.js</strong>. Our app will have two main routes:</p>
+<ol>
+<li>A home route - <code>/</code>. This route will render a list of posts from our API</li>
+<li>A post details route - <code>/post/:id</code>. This route will render a single post and details about that post.</li>
+</ol>
+<p>Using React Router, we can read the Post ID from the route, and then fetch the post associated with it. This is a common pattern in many apps as it makes the link shareable.</p>
+<p>Another way to do this would be to have some global state management set up and then set the post ID in the global state. The main drawback of this approach is that the URL cannot be shared.</p>
+<p>Other than routing, the main functionality happening in this component is a call to fetch posts from our GraphQL API.</p>
+<p>Paste the code below into the <strong>src/App.js</strong> file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#75715e">//App.js
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span>, { <span style="color:#a6e22e">useState</span>, <span style="color:#a6e22e">useEffect</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
+<span style="color:#66d9ef">import</span> {
+  <span style="color:#a6e22e">HashRouter</span>,
+  <span style="color:#a6e22e">Switch</span>,
+  <span style="color:#a6e22e">Route</span>
+} <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react-router-dom&#34;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">withAuthenticator</span>, <span style="color:#a6e22e">AmplifySignOut</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@aws-amplify/ui-react&#39;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">css</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;emotion&#39;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">API</span>, <span style="color:#a6e22e">Storage</span>, <span style="color:#a6e22e">Auth</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;aws-amplify&#39;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">listPosts</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./graphql/queries&#39;</span>;
+
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Posts</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./Posts&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Post</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./Post&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Header</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./Header&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">CreatePost</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./CreatePost&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Button</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./Button&#39;</span>;
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Router() {</span>
+
+  <span style="color:#75715e">/* create a couple of pieces of initial state */</span>
+  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">showOverlay</span>, <span style="color:#a6e22e">updateOverlayVisibility</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#66d9ef">false</span>);
+  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">posts</span>, <span style="color:#a6e22e">updatePosts</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>([]);
+
+  <span style="color:#75715e">/* fetch posts when component loads */</span>
+  <span style="color:#a6e22e">useEffect</span>(() <span style="color:#f92672">=&gt;</span> {
+      <span style="color:#a6e22e">fetchPosts</span>();
+  }, []);
+
+  <span style="color:#a6e22e">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">fetchPosts() {</span>
+
+    <span style="color:#75715e">/* query the API, ask for 100 items */</span>
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">postData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">API</span>.<span style="color:#a6e22e">graphql</span>({ <span style="color:#a6e22e">query</span>: <span style="color:#66d9ef">listPosts</span>, <span style="color:#a6e22e">variables</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">limit</span>: <span style="color:#66d9ef">100</span> }});
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">postsArray</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">postData</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">listPosts</span>.<span style="color:#a6e22e">items</span>;
+
+    <span style="color:#75715e">/* map over the image keys in the posts array, get signed image URLs for each image */</span>
+    <span style="color:#a6e22e">postsArray</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">Promise</span>.<span style="color:#a6e22e">all</span>(<span style="color:#a6e22e">postsArray</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">async</span> <span style="color:#a6e22e">post</span> <span style="color:#f92672">=&gt;</span> {
+      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">imageKey</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">Storage</span>.<span style="color:#a6e22e">get</span>(<span style="color:#a6e22e">post</span>.<span style="color:#a6e22e">image</span>);
+      <span style="color:#a6e22e">post</span>.<span style="color:#a6e22e">image</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">imageKey</span>;
+      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">post</span>;
+    }));
+
+    <span style="color:#75715e">/* update the posts array in the local state */</span>
+    <span style="color:#a6e22e">setPostState</span>(<span style="color:#a6e22e">postsArray</span>);
+  }
+  
+  <span style="color:#a6e22e">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setPostState</span>(<span style="color:#a6e22e">postsArray</span>) {
+    <span style="color:#a6e22e">updatePosts</span>(<span style="color:#a6e22e">postsArray</span>);
+  }
+
+  <span style="color:#66d9ef">return</span> (
+    &lt;&gt;
+      &lt;<span style="color:#f92672">HashRouter</span>&gt;
+          &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">contentStyle</span>}&gt;
+            &lt;<span style="color:#f92672">Header</span> /&gt;
+            &lt;<span style="color:#f92672">hr</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">dividerStyle</span>} /&gt;
+            &lt;<span style="color:#f92672">Button</span> <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;New Post&#34;</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{() <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">updateOverlayVisibility</span>(<span style="color:#66d9ef">true</span>)} /&gt;
+            &lt;<span style="color:#f92672">Switch</span>&gt;
+              &lt;<span style="color:#f92672">Route</span> <span style="color:#a6e22e">exact</span> <span style="color:#a6e22e">path</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/&#34;</span> &gt;
+                &lt;<span style="color:#f92672">Posts</span> <span style="color:#a6e22e">posts</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">posts</span>} /&gt;
+              &lt;/<span style="color:#f92672">Route</span>&gt;
+              &lt;<span style="color:#f92672">Route</span> <span style="color:#a6e22e">path</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/post/:id&#34;</span> &gt;
+                &lt;<span style="color:#f92672">Post</span> /&gt;
+              &lt;/<span style="color:#f92672">Route</span>&gt;
+            &lt;/<span style="color:#f92672">Switch</span>&gt;
+          &lt;/<span style="color:#f92672">div</span>&gt;
+          &lt;<span style="color:#f92672">AmplifySignOut</span> /&gt;
+        &lt;/<span style="color:#f92672">HashRouter</span>&gt;
+        { <span style="color:#a6e22e">showOverlay</span> <span style="color:#f92672">&amp;&amp;</span> (
+          &lt;<span style="color:#f92672">CreatePost</span>
+            <span style="color:#a6e22e">updateOverlayVisibility</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">updateOverlayVisibility</span>}
+            <span style="color:#a6e22e">updatePosts</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">setPostState</span>}
+            <span style="color:#a6e22e">posts</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">posts</span>}
+          /&gt;
+        )}
+    &lt;/&gt;
+  );
+}
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dividerStyle</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">css</span><span style="color:#e6db74">`
+</span><span style="color:#e6db74">  margin-top: 15px;
+</span><span style="color:#e6db74">`</span>
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">contentStyle</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">css</span><span style="color:#e6db74">`
+</span><span style="color:#e6db74">  min-height: calc(100vh - 45px);
+</span><span style="color:#e6db74">  padding: 0px 40px;
+</span><span style="color:#e6db74">`</span>
+
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#a6e22e">withAuthenticator</span>(<span style="color:#a6e22e">Router</span>);
+</code></pre></div>
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../50_photo_sharing_app/30_post_component.html" title="Fetching Posts via the GraphQL API"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="../50_photo_sharing_app/50_try_it_out.html" title="Try it Out!" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../js/clipboard.min.js"></script>
+    <script src="../js/perfect-scrollbar.min.js"></script>
+    <script src="../js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="../js/jquery.sticky.js"></script>
+    <script src="../js/featherlight.min.js"></script>
+    <script src="../js/html5shiv-printshiv.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../js/modernizr.custom-3.6.0.js"></script>
+    <script src="../js/learn.js"></script>
+    <script src="../js/hugo-learn.js"></script>
+
+    <link href="../mermaid/mermaid.css" rel="stylesheet" />
+    <script src="../mermaid/mermaid.js"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <div id = 'kinesisStreamName' title = ""/></div>
+<div id = 'cognitoPoolId' title = ""/></div>
+<div id = 'awsRegion' title = ""/></div>
+<div id = 'contentId' title = ""/></div>
+<div id = 'language' title = "en"/></div>
+<div id = 'versions' title = ""/></div>
+
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js"></script>
+<script src="../js/kinesis.js"></script>
+  </body>
+</html>

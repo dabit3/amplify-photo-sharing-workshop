@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Creating New Posts on Amplify Days ANZ Workshop</title>
+    <link>/50_photo_sharing_app/20_create_post.html</link>
+    <description>Recent content in Creating New Posts on Amplify Days ANZ Workshop</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Mon, 27 Jul 2020 19:59:50 +0800</lastBuildDate>
+    
+	<atom:link href="/50_photo_sharing_app/20_create_post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>

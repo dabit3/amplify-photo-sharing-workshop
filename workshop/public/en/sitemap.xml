@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/en/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="/fr/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/"
+                />
+  </url>
+  
+  <url>
+    <loc>/en/basics.html</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="/fr/basics.html"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/basics.html"
+                />
+  </url>
+  
+  <url>
+    <loc>/en/basics/requirements.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/basics/installation.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/basics/configuration.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/cont.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/cont/pages.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/cont/archetypes.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/cont/markdown.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/cont/icons.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/cont/i18n.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/shortcodes.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/shortcodes/attachments.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/shortcodes/button.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/shortcodes/children.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/shortcodes/expand.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/shortcodes/img.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/shortcodes/notice.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/shortcodes/siteparam.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/shortcodes/siteurl.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/launch.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/launch/metadata.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/categories.html</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="/fr/categories.html"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/categories.html"
+                />
+  </url>
+  
+  <url>
+    <loc>/en/shortcodes/children/children-1.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/shortcodes/children/children-1/children-1-1.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/shortcodes/children/children-1/children-1-1/children-1-1-1.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/shortcodes/children/children-1/children-1-1/children-1-1-1/children-1-1-1-1.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/shortcodes/children/children-1/children-1-1/children-1-1-1/children-1-1-1-1/children-1-1-1-1-1.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/shortcodes/children/children-2.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/shortcodes/children/children-3.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/shortcodes/children/test.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/shortcodes/children/children-2/test3.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/tags.html</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="/fr/tags.html"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags.html"
+                />
+  </url>
+  
+</urlset>

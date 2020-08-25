@@ -1,0 +1,4 @@
+toml == 0.10.0
+boto3 == 1.10.32
+requests == 2.22.0 
+requests-aws4auth ==0.9  
