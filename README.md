@@ -364,7 +364,7 @@ useEffect(() => {
 
 async function checkUser() {
   const user = await Auth.currentAuthenticatedUser();
-  console.log('user:', user);
+  console.log('user: ', user);
   console.log('user attributes: ', user.attributes);
 }
 ```
