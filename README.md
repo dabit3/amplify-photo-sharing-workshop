@@ -2,7 +2,7 @@
 
 In this workshop we'll learn how to build a full stack cloud application with React, GraphQL, & [Amplify](https://docs.amplify.aws/)
 
-![](banner.jpg)
+![](amplify-banner.jpg)
 
 ### Topics we'll be covering:
 
