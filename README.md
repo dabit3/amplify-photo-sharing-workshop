@@ -1,6 +1,28 @@
 # Build a Photo Sharing App with React and AWS Amplify
 
-In this workshop we'll learn how to build a full stack cloud application with React, GraphQL, & [Amplify](https://docs.amplify.aws/)
+In this workshop we'll learn how to build a full stack cloud application with React, GraphQL, & [Amplify](https://docs.amplify.aws/).
+
+We'll start from scratch, using the [Create React App CLI](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app) to create a new React web project. We'll then, step by step, use the [Amplify CLI](https://github.com/aws-amplify/amplify-cli) to build out and configure our cloud infrastructure and the [Amplify JS Libraries](https://github.com/aws-amplify/amplify-js) to connect the React client application to the APIs we create using the CLI.
+
+The app will be a basic CRUD + List app with real-time updates. When you think of many types of applications like Instagram, Twitter, or Facebook, they consist of a list of items and often the ability to drill down into a single item view. The app we will be building will be very similar to this, displaying a list of posts with images and data like the name, location, and description of the post. You will also be able to see only a view containing only a list of your own posts.
+
+This workshop should take you anywhere between 2 to 5 hours to complete.
+
+### Environment
+
+Before we begin, make sure you have the following installed:
+
+- Node.js v10.x or later
+- npm v5.x or later
+- git v2.14.1 or later
+
+We will be working from a terminal using a [Bash shell](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) to run Amplify CLI commands to provision infrastructure and also to run a local version of the React web app and test it in a web browser.
+
+### Background needed / level
+
+This workshop is intended for intermediate to advanced front end & back end developers wanting to learn more about full stack serverless development.
+
+While some level of React and GraphQL is helpful, this workshop requires zero previous knowledge about React or GraphQL.
 
 ![](amplify-banner.jpg)
 
