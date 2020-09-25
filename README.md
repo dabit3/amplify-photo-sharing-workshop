@@ -2,6 +2,8 @@
 
 In this workshop we'll learn how to build a full stack cloud application with React, GraphQL, & [Amplify](https://docs.amplify.aws/).
 
+![](amplify-banner.jpg)
+
 ### Overview
 
 We'll start from scratch, using the [Create React App CLI](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app) to create a new React web project. We'll then, step by step, use the [Amplify CLI](https://github.com/aws-amplify/amplify-cli) to build out and configure our cloud infrastructure and the [Amplify JS Libraries](https://github.com/aws-amplify/amplify-js) to connect the React client application to the APIs we create using the CLI.
@@ -25,8 +27,6 @@ We will be working from a terminal using a [Bash shell](https://en.wikipedia.org
 This workshop is intended for intermediate to advanced front end & back end developers wanting to learn more about full stack serverless development.
 
 While some level of React and GraphQL is helpful, this workshop requires zero previous knowledge about React or GraphQL.
-
-![](amplify-banner.jpg)
 
 ### Topics we'll be covering:
 
