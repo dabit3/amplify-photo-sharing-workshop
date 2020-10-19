@@ -429,7 +429,75 @@ await Storage.put(file.name, file);
 const image = await Storage.get('my-image-key.jpg')
 ```
 
-Now we can start saving images to S3 and we can continue building the Photo Sharing App Travel app.
+When fetching an item using the Storage category, Amplify will automatically retrieve the item with a [pre-signed url](https://docs.aws.amazon.com/AmazonS3/latest/dev/ShareObjectPreSignedURL.html) allowing the user to view the item.
+
+### Creating a basic photo album
+
+Let's update our code to implement a photo picker and photo album.
+
+When the app loads, we will make an API call to S3 to list the images in the bucket and render them to the screen.
+
+When a user uploads a new image, we'll also refresh the list of images along with the new image.
+
+```js
+// src/App.js
+import React, { useState, useEffect } from 'react';
+import { Storage } from 'aws-amplify'
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
+import { v4 as uuid } from 'uuid'
+
+function App() {
+  const [images, setImages] = useState([])
+  useEffect(() => {
+    fetchImages()
+  }, [])
+  async function fetchImages() {
+    // Fetch list of images from S3
+    let s3images = await Storage.list('')
+    // Get presigned URL for S3 images to display images in app
+    s3images = await Promise.all(s3images.map(async image => {
+      const signedImage = await Storage.get(image.key)
+      return signedImage
+    }))
+    setImages(s3images)
+  }
+  function onChange(e) {
+    if (!e.target.files[0]) return
+    const file = e.target.files[0];
+    // upload the image then fetch and rerender images
+    Storage.put(uuid(), file).then (() => fetchImages())
+  }
+
+  return (
+    <div>
+      <h1>Photo Album</h1>
+      <span>Add new image</span>
+      <input
+        type="file"
+        accept='image/png'
+        onChange={onChange}
+      />
+      <div style={{display: 'flex', flexDirection: 'column'}}>
+      { images.map(image => <img src={image} style={{width: 400, marginBottom: 10}} />) }
+      </div>
+      <AmplifySignOut />
+    </div>
+  );
+}
+
+export default withAuthenticator(App);
+```
+
+Now we can start saving images to S3 and we can also download and view them using the Storage category from AWS Amplify.
+
+To view the images as well as your S3 bucket at any time, do the following:
+
+1. Run `amplify console` from your terminal
+2. Click on the __File Storage__ tab
+3. Click on __View in S3__ in the top right corner
+4. Click on the __public__ bucket
+
+Next, we'll continue by building the Photo Sharing App Travel app.
 
 # Photo Sharing App Travel App
 
