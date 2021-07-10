@@ -5,7 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 import { API, Storage, Auth } from 'aws-amplify';
 import { listPosts } from './graphql/queries';
 

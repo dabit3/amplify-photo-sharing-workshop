@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 import Button from './Button';
 import { v4 as uuid } from 'uuid';
 import { Storage, API, Auth } from 'aws-amplify';

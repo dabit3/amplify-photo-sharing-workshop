@@ -49,7 +49,7 @@ Now change into the new app directory & install AWS Amplify, AWS Amplify UI Reac
 
 ```bash
 $ cd postagram
-$ npm install aws-amplify emotion uuid react-router-dom @aws-amplify/ui-react
+$ npm install aws-amplify emotion @emotion/css uuid react-router-dom @aws-amplify/ui-react
 ```
 
 ## Installing the CLI & Initializing a new AWS Amplify Project
@@ -523,7 +523,7 @@ Here, we will create a button that we'll be reusing across the app:
 
 ```js
 import React from 'react';
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 
 export default function Button({
   title, onClick, type = "action"
@@ -558,7 +558,7 @@ Add the following code in __Header.js__
 
 ```js
 import React from 'react';
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 import { Link } from 'react-router-dom';
 
 export default function Header() {
@@ -600,7 +600,7 @@ The `posts` array will be passed in as a prop to the __Posts__ component.
 
 ```js
 import React from 'react'
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 import { Link } from 'react-router-dom';
 
 export default function Posts({
@@ -674,7 +674,7 @@ This component has a lot going on, so before we dive into the code let's walk th
 
 ```js
 import React, { useState } from 'react';
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 import Button from './Button';
 import { v4 as uuid } from 'uuid';
 import { Storage, API, Auth } from 'aws-amplify';
@@ -812,7 +812,7 @@ When storing an image in S3, we
 
 ```js
 import React, { useState, useEffect } from 'react'
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 import { useParams } from 'react-router-dom';
 import { API, Storage } from 'aws-amplify';
 import { getPost } from './graphql/queries';
@@ -889,7 +889,7 @@ import {
   Route
 } from "react-router-dom";
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 import { API, Storage, Auth } from 'aws-amplify';
 import { listPosts } from './graphql/queries';
 
