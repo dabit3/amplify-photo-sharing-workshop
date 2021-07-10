@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 import { useParams } from 'react-router-dom';
 import { API, Storage } from 'aws-amplify';
 import { getPost } from './graphql/queries';
